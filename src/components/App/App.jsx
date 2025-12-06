@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import "./App.css";
@@ -15,9 +16,7 @@ function App() {
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
 
-        <footer className="footer">
-          <p>&copy; 2025 News Explorer</p>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );
