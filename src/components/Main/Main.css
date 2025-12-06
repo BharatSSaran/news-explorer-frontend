@@ -1,0 +1,35 @@
+/* Main page styles */
+.main {
+  flex: 1;
+  padding: 0;
+}
+
+.search {
+  background-color: #1a1b22;
+  color: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.search__title {
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 400;
+  margin: 0 0 32px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search__subtitle {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 48px;
+  opacity: 0.6;
+}
+
+.news-results {
+  padding: 80px 40px;
+  text-align: center;
+  color: #1a1b22;
+}

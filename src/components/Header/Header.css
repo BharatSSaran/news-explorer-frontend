@@ -1,0 +1,21 @@
+/* Header component styles */
+.header {
+  background-color: #1a1b22;
+  color: #ffffff;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header__logo:hover {
+  opacity: 0.6;
+}
