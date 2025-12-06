@@ -1,10 +1,22 @@
+import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
+import Preloader from "../Preloader/Preloader";
 import "./Main.css";
 
 function Main() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+
   const handleSearch = (query) => {
     console.log("Searching for:", query);
-    // TODO: Implement actual search functionality with News API
+    setIsLoading(true);
+    setHasSearched(true);
+
+    // Simulate API call delay
+    setTimeout(() => {
+      setIsLoading(false);
+      // TODO: Implement actual search functionality with News API
+    }, 2000);
   };
 
   return (
@@ -18,7 +30,11 @@ function Main() {
         <SearchForm onSearch={handleSearch} />
       </section>
       <section className="news-results">
-        <p>News results will appear here...</p>
+        {isLoading && <Preloader />}
+        {!isLoading && hasSearched && <p>News results will appear here...</p>}
+        {!isLoading && !hasSearched && (
+          <p>Enter a search term to find news articles.</p>
+        )}
       </section>
     </main>
   );
