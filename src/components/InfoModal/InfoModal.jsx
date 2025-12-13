@@ -33,7 +33,11 @@ function InfoModal({
       </div>
 
       <div className="info-modal__actions">
-        <button type="button" className="info-modal__button" onClick={onClose}>
+        <button
+          type="button"
+          className="info-modal__button smooth-transition button-hover-scale focus-ring"
+          onClick={onClose}
+        >
           {buttonText}
         </button>
       </div>

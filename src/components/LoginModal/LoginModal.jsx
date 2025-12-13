@@ -80,7 +80,9 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
       <h2 className="modal__title">Sign In</h2>
 
       {errors.general && (
-        <div className="login-modal__error-banner">{errors.general}</div>
+        <div className="login-modal__error-banner slide-in-bottom">
+          {errors.general}
+        </div>
       )}
 
       <form className="login-modal__form" onSubmit={handleSubmit}>
@@ -91,7 +93,7 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
           <input
             type="email"
             id="email"
-            className={`login-modal__input ${
+            className={`login-modal__input smooth-transition focus-ring ${
               errors.email ? "login-modal__input--error" : ""
             }`}
             placeholder="Enter email"
@@ -100,7 +102,9 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             disabled={isLoading}
           />
           {errors.email && (
-            <span className="login-modal__error">{errors.email}</span>
+            <span className="login-modal__error slide-in-bottom">
+              {errors.email}
+            </span>
           )}
         </div>
 
@@ -111,7 +115,7 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
           <input
             type="password"
             id="password"
-            className={`login-modal__input ${
+            className={`login-modal__input smooth-transition focus-ring ${
               errors.password ? "login-modal__input--error" : ""
             }`}
             placeholder="Enter password"
@@ -120,24 +124,26 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             disabled={isLoading}
           />
           {errors.password && (
-            <span className="login-modal__error">{errors.password}</span>
+            <span className="login-modal__error slide-in-bottom">
+              {errors.password}
+            </span>
           )}
         </div>
 
         <button
           type="submit"
-          className="login-modal__submit"
+          className="login-modal__submit smooth-transition button-hover-scale focus-ring"
           disabled={isLoading}
         >
           {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
 
-      <div className="login-modal__switch">
+      <div className="login-modal__switch fade-in">
         <span>Don't have an account?</span>
         <button
           type="button"
-          className="login-modal__switch-button"
+          className="login-modal__switch-button smooth-transition hover-opacity focus-ring"
           onClick={onSwitchToSignup}
           disabled={isLoading}
         >

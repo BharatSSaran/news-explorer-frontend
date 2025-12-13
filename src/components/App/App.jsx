@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -68,44 +69,53 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="app">
-        <Header
-          onLoginClick={handleLoginClick}
-          onSignupClick={handleSignupClick}
-          isLoggedIn={isLoggedIn}
-          user={user}
-        />
+    <ErrorBoundary>
+      <Router>
+        <div className="app respect-motion">
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <Header
+            onLoginClick={handleLoginClick}
+            onSignupClick={handleSignupClick}
+            isLoggedIn={isLoggedIn}
+            user={user}
+          />
 
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/saved-news" element={<SavedNews />} />
-        </Routes>
+          <ErrorBoundary>
+            <div id="main-content">
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/saved-news" element={<SavedNews />} />
+              </Routes>
+            </div>
+          </ErrorBoundary>
 
-        <Footer />
+          <Footer />
 
-        {/* Modals */}
-        <LoginModal
-          isOpen={isLoginModalOpen}
-          onClose={handleLoginModalClose}
-          onSwitchToSignup={handleSwitchToSignup}
-        />
+          {/* Modals */}
+          <LoginModal
+            isOpen={isLoginModalOpen}
+            onClose={handleLoginModalClose}
+            onSwitchToSignup={handleSwitchToSignup}
+          />
 
-        <SignupModal
-          isOpen={isSignupModalOpen}
-          onClose={handleSignupModalClose}
-          onSwitchToLogin={handleSwitchToLogin}
-        />
+          <SignupModal
+            isOpen={isSignupModalOpen}
+            onClose={handleSignupModalClose}
+            onSwitchToLogin={handleSwitchToLogin}
+          />
 
-        <InfoModal
-          isOpen={infoModal.isOpen}
-          onClose={closeInfoModal}
-          title={infoModal.title}
-          message={infoModal.message}
-          type={infoModal.type}
-        />
-      </div>
-    </Router>
+          <InfoModal
+            isOpen={infoModal.isOpen}
+            onClose={closeInfoModal}
+            title={infoModal.title}
+            message={infoModal.message}
+            type={infoModal.type}
+          />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 

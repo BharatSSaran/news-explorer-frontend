@@ -29,27 +29,30 @@ function NewsCard({ article, onSave, onRemove, isSaved = false }) {
   };
 
   return (
-    <article className="newscard">
+    <article className="newscard fade-in card-hover">
       <div className="newscard__image-container">
         {!imageError && article.urlToImage ? (
           <img
             src={article.urlToImage}
             alt={article.title}
-            className="newscard__image"
+            className="newscard__image smooth-transition"
             onError={handleImageError}
           />
         ) : (
-          <div className="newscard__image-placeholder">
+          <div className="newscard__image-placeholder fade-in">
             <span className="newscard__image-placeholder-text">
               No Image Available
             </span>
           </div>
         )}
         <button
-          className={`newscard__save-button ${
+          className={`newscard__save-button smooth-transition-fast button-hover-scale ${
             saved ? "newscard__save-button--saved" : ""
           }`}
           onClick={handleSaveClick}
+          aria-label={saved ? "Remove article from saved" : "Save article"}
+          aria-pressed={saved}
+          data-tooltip={saved ? "Remove from saved" : "Save article"}
           title={saved ? "Remove from saved" : "Save article"}
         >
           <svg

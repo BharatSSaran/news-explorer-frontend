@@ -21,13 +21,13 @@ function NewsCardList({
   // Handle empty state
   if (articles.length === 0) {
     return (
-      <section className="news-card-list">
+      <section className="news-card-list fade-in">
         {showTitle && (
-          <div className="news-card-list__header">
+          <div className="news-card-list__header slide-in-right">
             <h2 className="news-card-list__title">{title}</h2>
           </div>
         )}
-        <div className="news-card-list__empty">
+        <div className="news-card-list__empty scale-in">
           <p className="news-card-list__empty-text">
             No articles found. Try a different search term.
           </p>
@@ -37,9 +37,9 @@ function NewsCardList({
   }
 
   return (
-    <section className="news-card-list">
+    <section className="news-card-list fade-in">
       {showTitle && (
-        <div className="news-card-list__header">
+        <div className="news-card-list__header slide-in-right">
           <h2 className="news-card-list__title">{title}</h2>
           <p className="news-card-list__count">
             {articles.length} {articles.length === 1 ? "result" : "results"}
@@ -47,7 +47,7 @@ function NewsCardList({
         </div>
       )}
 
-      <div className="news-card-list__grid">
+      <div className="news-card-list__grid stagger-children">
         {articles.map((article, index) => (
           <NewsCard
             key={article.url || index}
@@ -60,9 +60,9 @@ function NewsCardList({
       </div>
 
       {showMore && (
-        <div className="news-card-list__show-more">
+        <div className="news-card-list__show-more scale-in">
           <button
-            className="news-card-list__show-more-button"
+            className="news-card-list__show-more-button smooth-transition button-hover-scale"
             onClick={onShowMore}
           >
             Show More

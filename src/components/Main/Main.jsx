@@ -60,9 +60,11 @@ function Main() {
 
   return (
     <main className="main">
-      <section className="search">
-        <h1 className="search__title">What's going on in the world?</h1>
-        <p className="search__subtitle">
+      <section className="search fade-in">
+        <h1 className="search__title slide-in-bottom">
+          What's going on in the world?
+        </h1>
+        <p className="search__subtitle slide-in-bottom">
           Find the latest news on any topic and save them in your personal
           account.
         </p>
@@ -70,9 +72,7 @@ function Main() {
       </section>
 
       {isLoading && (
-        <section className="news-results">
-          <Preloader />
-        </section>
+        <Preloader type="skeleton" displayedCount={displayedCount} />
       )}
 
       {!isLoading && hasSearched && articles.length > 0 && (

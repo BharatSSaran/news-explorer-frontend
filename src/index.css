@@ -1,5 +1,8 @@
 /* Global styles */
 @import "./styles/responsive-utilities.css";
+@import "./utils/animations.css";
+@import "./styles/component-animations.css";
+@import "./styles/ux-polish.css";
 
 :root {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",

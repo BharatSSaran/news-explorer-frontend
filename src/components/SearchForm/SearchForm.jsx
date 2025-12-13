@@ -27,24 +27,40 @@ function SearchForm({ onSearch }) {
   };
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
+    <form
+      className="search-form scale-in"
+      onSubmit={handleSubmit}
+      role="search"
+    >
       <div className="search-form__input-container">
+        <label htmlFor="search-input" className="sr-only">
+          Search for news
+        </label>
         <input
+          id="search-input"
           type="text"
-          className={`search-form__input ${
+          className={`search-form__input smooth-transition focus-ring ${
             error ? "search-form__input--error" : ""
           }`}
           placeholder="Enter topic"
           value={query}
           onChange={handleInputChange}
+          aria-describedby={error ? "search-error" : undefined}
+          aria-invalid={!!error}
         />
-        <button type="submit" className="search-form__button">
+        <button
+          type="submit"
+          className="search-form__button smooth-transition button-hover-scale pulse-on-hover"
+          aria-label="Search for news articles"
+        >
           Search
         </button>
       </div>
       {error && (
-        <div className="search-form__error">
-          <p className="search-form__error-text">{error}</p>
+        <div className="search-form__error slide-in-bottom" role="alert">
+          <p id="search-error" className="search-form__error-text">
+            {error}
+          </p>
         </div>
       )}
     </form>

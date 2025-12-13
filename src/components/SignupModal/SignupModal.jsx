@@ -91,7 +91,9 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
       <h2 className="modal__title">Sign Up</h2>
 
       {errors.general && (
-        <div className="signup-modal__error-banner">{errors.general}</div>
+        <div className="signup-modal__error-banner slide-in-bottom">
+          {errors.general}
+        </div>
       )}
 
       <form className="signup-modal__form" onSubmit={handleSubmit}>
@@ -102,7 +104,7 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
           <input
             type="email"
             id="signup-email"
-            className={`signup-modal__input ${
+            className={`signup-modal__input smooth-transition focus-ring ${
               errors.email ? "signup-modal__input--error" : ""
             }`}
             placeholder="Enter email"
@@ -111,7 +113,9 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             disabled={isLoading}
           />
           {errors.email && (
-            <span className="signup-modal__error">{errors.email}</span>
+            <span className="signup-modal__error slide-in-bottom">
+              {errors.email}
+            </span>
           )}
         </div>
 
@@ -122,7 +126,7 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
           <input
             type="password"
             id="signup-password"
-            className={`signup-modal__input ${
+            className={`signup-modal__input smooth-transition focus-ring ${
               errors.password ? "signup-modal__input--error" : ""
             }`}
             placeholder="Enter password"
@@ -131,7 +135,9 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             disabled={isLoading}
           />
           {errors.password && (
-            <span className="signup-modal__error">{errors.password}</span>
+            <span className="signup-modal__error slide-in-bottom">
+              {errors.password}
+            </span>
           )}
         </div>
 
@@ -142,7 +148,7 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
           <input
             type="text"
             id="signup-username"
-            className={`signup-modal__input ${
+            className={`signup-modal__input smooth-transition focus-ring ${
               errors.username ? "signup-modal__input--error" : ""
             }`}
             placeholder="Enter your username"
@@ -151,24 +157,26 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             disabled={isLoading}
           />
           {errors.username && (
-            <span className="signup-modal__error">{errors.username}</span>
+            <span className="signup-modal__error slide-in-bottom">
+              {errors.username}
+            </span>
           )}
         </div>
 
         <button
           type="submit"
-          className="signup-modal__submit"
+          className="signup-modal__submit smooth-transition button-hover-scale focus-ring"
           disabled={isLoading}
         >
           {isLoading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>
 
-      <div className="signup-modal__switch">
+      <div className="signup-modal__switch fade-in">
         <span>Already have an account?</span>
         <button
           type="button"
-          className="signup-modal__switch-button"
+          className="signup-modal__switch-button smooth-transition hover-opacity focus-ring"
           onClick={onSwitchToLogin}
           disabled={isLoading}
         >
