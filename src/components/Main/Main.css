@@ -35,7 +35,8 @@
 }
 
 .news-results__empty,
-.news-results__prompt {
+.news-results__prompt,
+.news-results__error {
   max-width: 600px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -49,12 +50,52 @@
   margin: 0;
 }
 
+.news-results__error {
+  text-align: center;
+}
+
+.news-results__error h3 {
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.news-results__error p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #ff6b6b;
+  margin: 0 0 24px;
+  background: #ffeaea;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.news-results__retry-button {
+  background: #2f71e5;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.news-results__retry-button:hover {
+  background: #347eff;
+}
+
 /* Remove the old news-results styles since we're using NewsCardList now */
 @media (max-width: 768px) {
   .news-results {
     padding: 40px 20px;
   }
-  
+
   .news-results__empty p,
   .news-results__prompt p {
     font-size: 16px;

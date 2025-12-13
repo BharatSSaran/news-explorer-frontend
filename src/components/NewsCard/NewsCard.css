@@ -122,20 +122,20 @@
   .newscard {
     border-radius: 12px;
   }
-  
+
   .newscard__image-container {
     height: 160px;
   }
-  
+
   .newscard__content {
     padding: 16px;
   }
-  
+
   .newscard__title {
     font-size: 18px;
     line-height: 22px;
   }
-  
+
   .newscard__description {
     font-size: 14px;
     line-height: 20px;

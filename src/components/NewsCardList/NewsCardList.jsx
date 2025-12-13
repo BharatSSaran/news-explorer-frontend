@@ -1,18 +1,18 @@
 import NewsCard from "../NewsCard/NewsCard";
 import "./NewsCardList.css";
 
-function NewsCardList({ 
-  articles = [], 
-  onSaveArticle, 
-  onRemoveArticle, 
+function NewsCardList({
+  articles = [],
+  onSaveArticle,
+  onRemoveArticle,
   savedArticles = [],
   title = "Search Results",
-  showTitle = true 
+  showTitle = true,
 }) {
   // Check if an article is saved
   const isArticleSaved = (article) => {
-    return savedArticles.some(saved => 
-      saved.url === article.url || saved.title === article.title
+    return savedArticles.some(
+      (saved) => saved.url === article.url || saved.title === article.title
     );
   };
 
@@ -40,11 +40,11 @@ function NewsCardList({
         <div className="news-card-list__header">
           <h2 className="news-card-list__title">{title}</h2>
           <p className="news-card-list__count">
-            {articles.length} {articles.length === 1 ? 'result' : 'results'}
+            {articles.length} {articles.length === 1 ? "result" : "results"}
           </p>
         </div>
       )}
-      
+
       <div className="news-card-list__grid">
         {articles.map((article, index) => (
           <NewsCard
@@ -56,7 +56,7 @@ function NewsCardList({
           />
         ))}
       </div>
-      
+
       {articles.length > 3 && (
         <div className="news-card-list__show-more">
           <button className="news-card-list__show-more-button">

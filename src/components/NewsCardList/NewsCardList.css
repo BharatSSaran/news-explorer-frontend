@@ -79,23 +79,23 @@
   .news-card-list {
     padding: 40px 20px;
   }
-  
+
   .news-card-list__header {
     margin-bottom: 24px;
     text-align: center;
   }
-  
+
   .news-card-list__title {
     font-size: 32px;
     line-height: 36px;
   }
-  
+
   .news-card-list__grid {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-bottom: 24px;
   }
-  
+
   .news-card-list__show-more {
     margin-top: 24px;
   }
@@ -105,7 +105,7 @@
   .news-card-list {
     padding: 24px 16px;
   }
-  
+
   .news-card-list__title {
     font-size: 28px;
     line-height: 32px;

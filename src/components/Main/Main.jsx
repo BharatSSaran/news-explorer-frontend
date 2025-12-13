@@ -2,35 +2,8 @@ import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
+import { fetchNewsArticles } from "../../utils/newsApi";
 import "./Main.css";
-
-// Mock data for testing NewsCard display
-const mockArticles = [
-  {
-    title: "Breaking: Major Technology Breakthrough Announced",
-    description: "Scientists have made a significant breakthrough in quantum computing that could revolutionize the tech industry. This development promises faster processing speeds and enhanced security measures.",
-    url: "https://example.com/tech-breakthrough",
-    urlToImage: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400",
-    publishedAt: "2025-12-06T10:00:00Z",
-    source: { name: "Tech News Today" }
-  },
-  {
-    title: "Climate Summit Reaches Historic Agreement",
-    description: "World leaders have reached a consensus on new climate policies that aim to reduce global emissions by 50% over the next decade. The agreement includes funding for renewable energy projects.",
-    url: "https://example.com/climate-summit",
-    urlToImage: "https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=400",
-    publishedAt: "2025-12-06T08:30:00Z",
-    source: { name: "Global News Network" }
-  },
-  {
-    title: "Space Exploration Mission Launches Successfully",
-    description: "The latest Mars exploration mission has launched successfully, carrying advanced instruments to study the planet's geological composition and search for signs of ancient life.",
-    url: "https://example.com/space-mission",
-    urlToImage: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400",
-    publishedAt: "2025-12-05T16:45:00Z",
-    source: { name: "Space Chronicle" }
-  }
-];
 
 function Main() {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,25 +11,34 @@ function Main() {
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSearch = (query) => {
+  const handleSearch = async (query) => {
     console.log("Searching for:", query);
     setIsLoading(true);
     setHasSearched(true);
     setSearchQuery(query);
+    setError("");
 
-    // Simulate API call with mock data
-    setTimeout(() => {
+    try {
+      const data = await fetchNewsArticles(query, {
+        pageSize: 12,
+        sortBy: "publishedAt",
+      });
+
+      setArticles(data.articles);
+    } catch (err) {
+      console.error("Search error:", err);
+      setError(err.message);
+      setArticles([]);
+    } finally {
       setIsLoading(false);
-      setArticles(mockArticles);
-      // TODO: Replace with actual News API call
-      // fetchNewsArticles(query).then(setArticles)
-    }, 2000);
+    }
   };
 
   const handleSaveArticle = (article) => {
-    setSavedArticles(prev => {
-      const isAlreadySaved = prev.some(saved => saved.url === article.url);
+    setSavedArticles((prev) => {
+      const isAlreadySaved = prev.some((saved) => saved.url === article.url);
       if (!isAlreadySaved) {
         return [...prev, article];
       }
@@ -65,8 +47,8 @@ function Main() {
   };
 
   const handleRemoveArticle = (article) => {
-    setSavedArticles(prev => 
-      prev.filter(saved => saved.url !== article.url)
+    setSavedArticles((prev) =>
+      prev.filter((saved) => saved.url !== article.url)
     );
   };
 
@@ -80,13 +62,13 @@ function Main() {
         </p>
         <SearchForm onSearch={handleSearch} />
       </section>
-      
+
       {isLoading && (
         <section className="news-results">
           <Preloader />
         </section>
       )}
-      
+
       {!isLoading && hasSearched && articles.length > 0 && (
         <NewsCardList
           articles={articles}
@@ -96,15 +78,30 @@ function Main() {
           title={`Search results for "${searchQuery}"`}
         />
       )}
-      
-      {!isLoading && hasSearched && articles.length === 0 && (
+
+      {!isLoading && hasSearched && error && (
+        <section className="news-results">
+          <div className="news-results__error">
+            <h3>Oops! Something went wrong</h3>
+            <p>{error}</p>
+            <button
+              onClick={() => handleSearch(searchQuery)}
+              className="news-results__retry-button"
+            >
+              Try Again
+            </button>
+          </div>
+        </section>
+      )}
+
+      {!isLoading && hasSearched && !error && articles.length === 0 && (
         <section className="news-results">
           <div className="news-results__empty">
             <p>No articles found for your search. Try a different term.</p>
           </div>
         </section>
       )}
-      
+
       {!isLoading && !hasSearched && (
         <section className="news-results">
           <div className="news-results__prompt">
