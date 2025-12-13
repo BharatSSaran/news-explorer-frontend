@@ -26,6 +26,9 @@
   line-height: 24px;
   margin: 0 0 48px;
   opacity: 0.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .news-results {
@@ -90,15 +93,108 @@
   background: #347eff;
 }
 
-/* Remove the old news-results styles since we're using NewsCardList now */
-@media (max-width: 768px) {
+/* Responsive design */
+@media (max-width: 1024px) {
+  .search {
+    padding: 64px 32px;
+  }
+
+  .search__title {
+    font-size: 48px;
+    line-height: 52px;
+    margin-bottom: 24px;
+  }
+
+  .search__subtitle {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 40px;
+  }
+
   .news-results {
-    padding: 40px 20px;
+    padding: 64px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    padding: 48px 24px;
+  }
+
+  .search__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .search__subtitle {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 32px;
+  }
+
+  .news-results {
+    padding: 48px 24px;
   }
 
   .news-results__empty p,
   .news-results__prompt p {
     font-size: 16px;
     line-height: 22px;
+  }
+
+  .news-results__error h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .news-results__error p {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search {
+    padding: 32px 16px;
+  }
+
+  .search__title {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+
+  .search__subtitle {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 24px;
+  }
+
+  .news-results {
+    padding: 32px 16px;
+  }
+
+  .news-results__retry-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .search {
+    padding: 24px 16px;
+  }
+
+  .search__title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .search__subtitle {
+    font-size: 13px;
+    line-height: 16px;
   }
 }

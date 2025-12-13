@@ -1,7 +1,9 @@
 /* Global styles */
+@import "./styles/responsive-utilities.css";
+
 :root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -21,6 +23,7 @@
 body {
   margin: 0;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 a {
@@ -31,4 +34,34 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus outline improvements */
+*:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Improve text selection */
+::selection {
+  background-color: #2f71e5;
+  color: #ffffff;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
 }
