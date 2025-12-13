@@ -12,6 +12,7 @@ function Main() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
+  const [displayedCount, setDisplayedCount] = useState(3);
 
   const handleSearch = async (query) => {
     console.log("Searching for:", query);
@@ -19,10 +20,11 @@ function Main() {
     setHasSearched(true);
     setSearchQuery(query);
     setError("");
+    setDisplayedCount(3); // Reset to show 3 initially
 
     try {
       const data = await fetchNewsArticles(query, {
-        pageSize: 12,
+        pageSize: 100,
         sortBy: "publishedAt",
       });
 
@@ -52,6 +54,10 @@ function Main() {
     );
   };
 
+  const handleShowMore = () => {
+    setDisplayedCount((prev) => Math.min(prev + 3, articles.length));
+  };
+
   return (
     <main className="main">
       <section className="search">
@@ -71,11 +77,13 @@ function Main() {
 
       {!isLoading && hasSearched && articles.length > 0 && (
         <NewsCardList
-          articles={articles}
+          articles={articles.slice(0, displayedCount)}
           onSaveArticle={handleSaveArticle}
           onRemoveArticle={handleRemoveArticle}
           savedArticles={savedArticles}
           title={`Search results for "${searchQuery}"`}
+          showMore={displayedCount < articles.length}
+          onShowMore={handleShowMore}
         />
       )}
 

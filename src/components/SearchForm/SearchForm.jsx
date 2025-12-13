@@ -3,16 +3,27 @@ import "./SearchForm.css";
 
 function SearchForm({ onSearch }) {
   const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(query.trim());
+    const trimmedQuery = query.trim();
+
+    if (!trimmedQuery) {
+      setError("Please enter a keyword");
+      return;
     }
+
+    setError("");
+    onSearch(trimmedQuery);
   };
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    // Clear error when user starts typing
+    if (error) {
+      setError("");
+    }
   };
 
   return (
@@ -20,16 +31,22 @@ function SearchForm({ onSearch }) {
       <div className="search-form__input-container">
         <input
           type="text"
-          className="search-form__input"
+          className={`search-form__input ${
+            error ? "search-form__input--error" : ""
+          }`}
           placeholder="Enter topic"
           value={query}
           onChange={handleInputChange}
-          required
         />
         <button type="submit" className="search-form__button">
           Search
         </button>
       </div>
+      {error && (
+        <div className="search-form__error">
+          <p className="search-form__error-text">{error}</p>
+        </div>
+      )}
     </form>
   );
 }

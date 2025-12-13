@@ -8,6 +8,8 @@ function NewsCardList({
   savedArticles = [],
   title = "Search Results",
   showTitle = true,
+  showMore = false,
+  onShowMore,
 }) {
   // Check if an article is saved
   const isArticleSaved = (article) => {
@@ -57,9 +59,12 @@ function NewsCardList({
         ))}
       </div>
 
-      {articles.length > 3 && (
+      {showMore && (
         <div className="news-card-list__show-more">
-          <button className="news-card-list__show-more-button">
+          <button
+            className="news-card-list__show-more-button"
+            onClick={onShowMore}
+          >
             Show More
           </button>
         </div>

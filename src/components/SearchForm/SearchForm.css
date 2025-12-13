@@ -45,6 +45,24 @@
   background-color: #347eff;
 }
 
+.search-form__input--error {
+  border: 1px solid #ff6b6b !important;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+}
+
+.search-form__error {
+  margin-top: 8px;
+  text-align: left;
+}
+
+.search-form__error-text {
+  color: #ff6b6b;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  font-weight: 500;
+}
+
 .search-form__button:disabled {
   background-color: #b6bcbf;
   cursor: not-allowed;

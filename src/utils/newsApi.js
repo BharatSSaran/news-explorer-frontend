@@ -1,7 +1,10 @@
 // News API service for fetching articles
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const BASE_URL =
-  import.meta.env.VITE_NEWS_API_BASE_URL || "https://newsapi.org/v2";
+
+// Use production proxy in production, development API in development
+const BASE_URL = import.meta.env.PROD
+  ? "https://nomoreparties.co/news/v2"
+  : import.meta.env.VITE_NEWS_API_BASE_URL || "https://newsapi.org/v2";
 
 /**
  * Fetches news articles from News API
@@ -19,14 +22,24 @@ export const fetchNewsArticles = async (query, options = {}) => {
 
   const {
     page = 1,
-    pageSize = 12,
+    pageSize = 100,
     sortBy = "publishedAt",
     language = "en",
   } = options;
 
+  // Calculate date range - from 7 days ago to current date
+  const currentDate = new Date();
+  const sevenDaysAgo = new Date(currentDate);
+  sevenDaysAgo.setDate(currentDate.getDate() - 7);
+
+  const fromDate = sevenDaysAgo.toISOString().split("T")[0]; // YYYY-MM-DD format
+  const toDate = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD format
+
   // Build URL with parameters
   const params = new URLSearchParams({
     q: query,
+    from: fromDate,
+    to: toDate,
     page: page.toString(),
     pageSize: pageSize.toString(),
     sortBy,
