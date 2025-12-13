@@ -3,6 +3,7 @@ import "./NewsCard.css";
 
 function NewsCard({ article, onSave, onRemove, isSaved = false }) {
   const [saved, setSaved] = useState(isSaved);
+  const [imageError, setImageError] = useState(false);
 
   const handleSaveClick = () => {
     if (saved) {
@@ -12,6 +13,10 @@ function NewsCard({ article, onSave, onRemove, isSaved = false }) {
       onSave?.(article);
       setSaved(true);
     }
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   const formatDate = (dateString) => {
@@ -26,14 +31,20 @@ function NewsCard({ article, onSave, onRemove, isSaved = false }) {
   return (
     <article className="newscard">
       <div className="newscard__image-container">
-        <img
-          src={article.urlToImage || "/images/placeholder-news.jpg"}
-          alt={article.title}
-          className="newscard__image"
-          onError={(e) => {
-            e.target.src = "/images/placeholder-news.jpg";
-          }}
-        />
+        {!imageError && article.urlToImage ? (
+          <img
+            src={article.urlToImage}
+            alt={article.title}
+            className="newscard__image"
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="newscard__image-placeholder">
+            <span className="newscard__image-placeholder-text">
+              No Image Available
+            </span>
+          </div>
+        )}
         <button
           className={`newscard__save-button ${
             saved ? "newscard__save-button--saved" : ""

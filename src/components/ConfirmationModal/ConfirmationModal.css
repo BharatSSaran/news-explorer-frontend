@@ -1,0 +1,109 @@
+/* ConfirmationModal component styles */
+
+.confirmation-modal__content {
+  margin-bottom: 32px;
+}
+
+.confirmation-modal__message {
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+  text-align: center;
+}
+
+.confirmation-modal__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.confirmation-modal__cancel,
+.confirmation-modal__confirm {
+  flex: 1;
+  padding: 16px 24px;
+  border-radius: 100px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-width: 120px;
+}
+
+.confirmation-modal__cancel {
+  background-color: transparent;
+  color: #1a1b22;
+  border: 1px solid #d1d2d6;
+}
+
+.confirmation-modal__cancel:hover:not(:disabled) {
+  background-color: #f5f6f7;
+  border-color: #b6bcbf;
+}
+
+.confirmation-modal__cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirmation-modal__cancel:focus {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
+.confirmation-modal__confirm {
+  background-color: #2f71e5;
+  color: #ffffff;
+}
+
+.confirmation-modal__confirm:hover:not(:disabled) {
+  background-color: #347eff;
+}
+
+.confirmation-modal__confirm--destructive {
+  background-color: #ff6b6b;
+}
+
+.confirmation-modal__confirm--destructive:hover:not(:disabled) {
+  background-color: #ff5252;
+}
+
+.confirmation-modal__confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirmation-modal__confirm:focus {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
+.confirmation-modal__confirm--destructive:focus {
+  outline-color: #ff6b6b;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .confirmation-modal__actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .confirmation-modal__cancel,
+  .confirmation-modal__confirm {
+    padding: 14px 20px;
+    font-size: 15px;
+    min-width: unset;
+  }
+
+  .confirmation-modal__message {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .confirmation-modal__content {
+    margin-bottom: 24px;
+  }
+}

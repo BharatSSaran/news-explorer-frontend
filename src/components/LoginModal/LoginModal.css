@@ -1,0 +1,157 @@
+/* LoginModal component styles */
+
+.login-modal__error-banner {
+  background-color: #ffe5e5;
+  color: #d63031;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  border: 1px solid #fab1a0;
+}
+
+.login-modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal__field {
+  margin-bottom: 24px;
+}
+
+.login-modal__label {
+  display: block;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  color: #1a1b22;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.login-modal__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d1d2d6;
+  padding: 16px 0 13px 0;
+  font-size: 16px;
+  line-height: 17px;
+  color: #1a1b22;
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.login-modal__input:focus {
+  outline: none;
+  border-bottom-color: #2f71e5;
+}
+
+.login-modal__input::placeholder {
+  color: #b6bcbf;
+}
+
+.login-modal__input--error {
+  border-bottom-color: #ff6b6b;
+}
+
+.login-modal__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-modal__error {
+  display: block;
+  color: #ff6b6b;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 8px;
+}
+
+.login-modal__submit {
+  background-color: #2f71e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 20px 24px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.login-modal__submit:hover:not(:disabled) {
+  background-color: #347eff;
+}
+
+.login-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-modal__submit:focus {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
+.login-modal__switch {
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  color: #b6bcbf;
+}
+
+.login-modal__switch-button {
+  background: none;
+  border: none;
+  color: #2f71e5;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: color 0.2s ease;
+}
+
+.login-modal__switch-button:hover:not(:disabled) {
+  color: #347eff;
+  text-decoration: underline;
+}
+
+.login-modal__switch-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-modal__switch-button:focus {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .login-modal__field {
+    margin-bottom: 20px;
+  }
+
+  .login-modal__submit {
+    padding: 18px 20px;
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .login-modal__switch {
+    font-size: 13px;
+  }
+
+  .login-modal__switch-button {
+    font-size: 13px;
+  }
+}
