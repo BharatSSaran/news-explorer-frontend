@@ -31,7 +31,7 @@
 .navigation__user {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 .navigation__username {
@@ -41,38 +41,45 @@
   font-weight: 500;
 }
 
-.navigation__signup {
-  background: transparent;
-  border: none;
-  color: inherit;
-  padding: 13px 16px;
-  font-size: 18px;
-  line-height: 24px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.navigation__signup:hover {
-  opacity: 0.6;
-}
-
-.navigation__signin,
-.navigation__signout {
+.navigation__signin {
   background: transparent;
   border: 1px solid #ffffff;
   color: #ffffff;
-  padding: 13px 20px;
+  padding: 8px 24px;
   border-radius: 100px;
   font-size: 18px;
   line-height: 24px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.navigation__signin:hover,
-.navigation__signout:hover {
+.navigation__signin:hover {
   background-color: #ffffff;
   color: #1a1b22;
+}
+
+.navigation__signout {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.navigation__signout:hover {
+  opacity: 0.6;
+}
+
+.navigation__signout-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 /* Mobile responsiveness */

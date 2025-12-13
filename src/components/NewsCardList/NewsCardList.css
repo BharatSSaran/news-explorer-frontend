@@ -67,7 +67,7 @@
   background: #347eff;
 }
 
-/* Responsive design */
+/* Responsive design - Exact Figma breakpoints */
 @media (min-width: 1440px) {
   .news-card-list {
     padding: 100px 80px;
@@ -85,18 +85,7 @@
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .news-card-list {
-    padding: 80px 60px;
-  }
-
-  .news-card-list__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1439px) {
   .news-card-list {
     padding: 80px 40px;
   }
@@ -107,19 +96,12 @@
   }
 
   .news-card-list__title {
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 40px;
+    line-height: 44px;
   }
 }
 
-@media (max-width: 1023px) {
-  .news-card-list__grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .news-card-list {
     padding: 40px 20px;
   }
@@ -151,7 +133,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   .news-card-list {
     padding: 24px 16px;
   }
@@ -170,16 +152,5 @@
     padding: 12px 20px;
     font-size: 15px;
     line-height: 18px;
-  }
-}
-
-@media (max-width: 375px) {
-  .news-card-list {
-    padding: 20px 16px;
-  }
-
-  .news-card-list__title {
-    font-size: 24px;
-    line-height: 28px;
   }
 }

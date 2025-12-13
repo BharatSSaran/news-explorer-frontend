@@ -93,8 +93,30 @@
   background: #347eff;
 }
 
-/* Responsive design */
-@media (max-width: 1024px) {
+/* Responsive design - Exact Figma breakpoints */
+@media (min-width: 1440px) {
+  .search {
+    padding: 80px 40px;
+  }
+
+  .search__title {
+    font-size: 60px;
+    line-height: 64px;
+    margin-bottom: 32px;
+  }
+
+  .search__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 48px;
+  }
+
+  .news-results {
+    padding: 80px 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
   .search {
     padding: 64px 32px;
   }
@@ -116,7 +138,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .search {
     padding: 48px 24px;
   }
@@ -155,7 +177,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   .search {
     padding: 32px 16px;
   }
@@ -180,21 +202,5 @@
     padding: 10px 20px;
     font-size: 14px;
     line-height: 18px;
-  }
-}
-
-@media (max-width: 375px) {
-  .search {
-    padding: 24px 16px;
-  }
-
-  .search__title {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  .search__subtitle {
-    font-size: 13px;
-    line-height: 16px;
   }
 }
