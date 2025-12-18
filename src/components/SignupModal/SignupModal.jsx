@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from "../../contexts/AuthContext";
 import Modal from "../Modal/Modal";
 import "./SignupModal.css";
 
@@ -49,16 +49,18 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
 
     try {
       const response = await register(email, password, username);
-      
+
       if (response && response.user) {
         // Show success notification
-        showInfoModal('Registration successful! Please sign in.');
+        showInfoModal("Registration successful! Please sign in.");
         // Switch to login modal
         onSwitchToLogin();
       }
     } catch (error) {
       console.error("Registration error:", error);
-      setErrors({ general: error.message || "Registration failed. Please try again." });
+      setErrors({
+        general: error.message || "Registration failed. Please try again.",
+      });
     }
   };
 

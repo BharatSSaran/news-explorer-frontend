@@ -39,15 +39,17 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
 
     try {
       const response = await login(email, password);
-      
+
       if (response && response.user) {
         // Show success notification
-        showInfoModal('Login successful!');
+        showInfoModal("Login successful!");
         onClose();
       }
     } catch (error) {
       console.error("Login error:", error);
-      setErrors({ general: error.message || "Login failed. Please try again." });
+      setErrors({
+        general: error.message || "Login failed. Please try again.",
+      });
     }
   };
 
