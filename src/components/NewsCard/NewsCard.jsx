@@ -70,7 +70,16 @@ function NewsCard({ article, onSave, onRemove, isSaved = false }) {
           {formatDate(article.publishedAt)}
         </time>
 
-        <h3 className="newscard__title">{article.title}</h3>
+        <h3 className="newscard__title">
+          <a
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="newscard__title-link"
+          >
+            {article.title}
+          </a>
+        </h3>
 
         <p className="newscard__description">{article.description}</p>
 
