@@ -111,9 +111,12 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             value={email}
             onChange={handleInputChange(setEmail, "email")}
             disabled={isLoading}
+            required
+            autoComplete="email"
+            aria-describedby={errors.email ? "signup-email-error" : undefined}
           />
           {errors.email && (
-            <span className="signup-modal__error slide-in-bottom">
+            <span id="signup-email-error" className="signup-modal__error slide-in-bottom">
               {errors.email}
             </span>
           )}
@@ -133,9 +136,13 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             value={password}
             onChange={handleInputChange(setPassword, "password")}
             disabled={isLoading}
+            required
+            minLength="8"
+            autoComplete="new-password"
+            aria-describedby={errors.password ? "signup-password-error" : undefined}
           />
           {errors.password && (
-            <span className="signup-modal__error slide-in-bottom">
+            <span id="signup-password-error" className="signup-modal__error slide-in-bottom">
               {errors.password}
             </span>
           )}
@@ -155,9 +162,14 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             value={username}
             onChange={handleInputChange(setUsername, "username")}
             disabled={isLoading}
+            required
+            minLength="2"
+            maxLength="20"
+            autoComplete="username"
+            aria-describedby={errors.username ? "signup-username-error" : undefined}
           />
           {errors.username && (
-            <span className="signup-modal__error slide-in-bottom">
+            <span id="signup-username-error" className="signup-modal__error slide-in-bottom">
               {errors.username}
             </span>
           )}

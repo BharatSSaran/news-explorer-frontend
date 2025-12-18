@@ -100,9 +100,12 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             value={email}
             onChange={handleInputChange(setEmail, "email")}
             disabled={isLoading}
+            required
+            autoComplete="email"
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <span className="login-modal__error slide-in-bottom">
+            <span id="email-error" className="login-modal__error slide-in-bottom">
               {errors.email}
             </span>
           )}
@@ -122,9 +125,13 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             value={password}
             onChange={handleInputChange(setPassword, "password")}
             disabled={isLoading}
+            required
+            minLength="8"
+            autoComplete="current-password"
+            aria-describedby={errors.password ? "password-error" : undefined}
           />
           {errors.password && (
-            <span className="login-modal__error slide-in-bottom">
+            <span id="password-error" className="login-modal__error slide-in-bottom">
               {errors.password}
             </span>
           )}
