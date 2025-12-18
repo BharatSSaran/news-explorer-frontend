@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "../../contexts/AuthContext";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -11,10 +12,6 @@ import InfoModal from "../InfoModal/InfoModal";
 import "./App.css";
 
 function App() {
-  // Authentication state
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-
   // Modal state
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
@@ -70,51 +67,53 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <Router>
-        <div className="app respect-motion">
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
-          <Header
-            onLoginClick={handleLoginClick}
-            onSignupClick={handleSignupClick}
-            isLoggedIn={isLoggedIn}
-            user={user}
-          />
+      <AuthProvider>
+        <Router basename="/news-explorer-frontend">
+          <div className="app respect-motion">
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            <Header
+              onLoginClick={handleLoginClick}
+              onSignupClick={handleSignupClick}
+            />
 
-          <ErrorBoundary>
-            <div id="main-content">
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/saved-news" element={<SavedNews />} />
-              </Routes>
-            </div>
-          </ErrorBoundary>
+            <ErrorBoundary>
+              <div id="main-content">
+                <Routes>
+                  <Route path="/" element={<Main />} />
+                  <Route path="/saved-news" element={<SavedNews />} />
+                </Routes>
+              </div>
+            </ErrorBoundary>
 
-          <Footer />
+            <Footer />
 
-          {/* Modals */}
-          <LoginModal
-            isOpen={isLoginModalOpen}
-            onClose={handleLoginModalClose}
-            onSwitchToSignup={handleSwitchToSignup}
-          />
+            {/* Modals */}
+            <LoginModal
+              isOpen={isLoginModalOpen}
+              onClose={handleLoginModalClose}
+              onSwitchToSignup={handleSwitchToSignup}
+              showInfoModal={showInfoModal}
+            />
 
-          <SignupModal
-            isOpen={isSignupModalOpen}
-            onClose={handleSignupModalClose}
-            onSwitchToLogin={handleSwitchToLogin}
-          />
+            <SignupModal
+              isOpen={isSignupModalOpen}
+              onClose={handleSignupModalClose}
+              onSwitchToLogin={handleSwitchToLogin}
+              showInfoModal={showInfoModal}
+            />
 
-          <InfoModal
-            isOpen={infoModal.isOpen}
-            onClose={closeInfoModal}
-            title={infoModal.title}
-            message={infoModal.message}
-            type={infoModal.type}
-          />
-        </div>
-      </Router>
+            <InfoModal
+              isOpen={infoModal.isOpen}
+              onClose={closeInfoModal}
+              title={infoModal.title}
+              message={infoModal.message}
+              type={infoModal.type}
+            />
+          </div>
+        </Router>
+      </AuthProvider>
     </ErrorBoundary>
   );
 }

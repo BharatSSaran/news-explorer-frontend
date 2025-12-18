@@ -1,15 +1,16 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "./Navigation.css";
 
-function Navigation({
-  onLoginClick,
-  onSignupClick,
-  isLoggedIn = false,
-  user = null,
-}) {
-  const handleSignOut = () => {
-    // TODO: Implement sign out functionality
-    console.log("Sign out clicked");
+function Navigation({ onLoginClick }) {
+  const { isAuthenticated, user, logout } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   };
 
   return (
@@ -22,7 +23,7 @@ function Navigation({
         Saved articles
       </NavLink>
 
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <div className="navigation__user fade-in">
           <span className="navigation__username smooth-transition">
             {user?.username || "Elise"}

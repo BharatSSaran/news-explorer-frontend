@@ -116,7 +116,10 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             aria-describedby={errors.email ? "signup-email-error" : undefined}
           />
           {errors.email && (
-            <span id="signup-email-error" className="signup-modal__error slide-in-bottom">
+            <span
+              id="signup-email-error"
+              className="signup-modal__error slide-in-bottom"
+            >
               {errors.email}
             </span>
           )}
@@ -139,10 +142,15 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             required
             minLength="8"
             autoComplete="new-password"
-            aria-describedby={errors.password ? "signup-password-error" : undefined}
+            aria-describedby={
+              errors.password ? "signup-password-error" : undefined
+            }
           />
           {errors.password && (
-            <span id="signup-password-error" className="signup-modal__error slide-in-bottom">
+            <span
+              id="signup-password-error"
+              className="signup-modal__error slide-in-bottom"
+            >
               {errors.password}
             </span>
           )}
@@ -166,10 +174,15 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
             minLength="2"
             maxLength="20"
             autoComplete="username"
-            aria-describedby={errors.username ? "signup-username-error" : undefined}
+            aria-describedby={
+              errors.username ? "signup-username-error" : undefined
+            }
           />
           {errors.username && (
-            <span id="signup-username-error" className="signup-modal__error slide-in-bottom">
+            <span
+              id="signup-username-error"
+              className="signup-modal__error slide-in-bottom"
+            >
               {errors.username}
             </span>
           )}

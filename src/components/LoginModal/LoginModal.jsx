@@ -105,7 +105,10 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <span id="email-error" className="login-modal__error slide-in-bottom">
+            <span
+              id="email-error"
+              className="login-modal__error slide-in-bottom"
+            >
               {errors.email}
             </span>
           )}
@@ -131,7 +134,10 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
             aria-describedby={errors.password ? "password-error" : undefined}
           />
           {errors.password && (
-            <span id="password-error" className="login-modal__error slide-in-bottom">
+            <span
+              id="password-error"
+              className="login-modal__error slide-in-bottom"
+            >
               {errors.password}
             </span>
           )}
