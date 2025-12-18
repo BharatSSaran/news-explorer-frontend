@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import Modal from "../Modal/Modal";
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
+function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, isLoading } = useAuth();
 
   const validateForm = () => {
     const newErrors = {};
@@ -36,25 +37,17 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      // TODO: Replace with actual authentication API call
-      console.log("Login attempt:", { email, password });
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // TODO: Handle successful login
-      // - Store auth token
-      // - Update user state
-      // - Close modal
-      onClose();
+      const response = await login(email, password);
+      
+      if (response && response.user) {
+        // Show success notification
+        showInfoModal('Login successful!');
+        onClose();
+      }
     } catch (error) {
       console.error("Login error:", error);
-      setErrors({ general: "Login failed. Please try again." });
-    } finally {
-      setIsLoading(false);
+      setErrors({ general: error.message || "Login failed. Please try again." });
     }
   };
 
@@ -71,7 +64,6 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup }) {
     setEmail("");
     setPassword("");
     setErrors({});
-    setIsLoading(false);
     onClose();
   };
 

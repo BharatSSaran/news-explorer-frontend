@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { useAuth } from '../../contexts/AuthContext';
 import Modal from "../Modal/Modal";
 import "./SignupModal.css";
 
-function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
+function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const { register, isLoading } = useAuth();
 
   const validateForm = () => {
     const newErrors = {};
@@ -46,25 +47,18 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      // TODO: Replace with actual registration API call
-      console.log("Registration attempt:", { email, username, password });
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // TODO: Handle successful registration
-      // - Store auth token or switch to login
-      // - Update user state
-      // - Show success message
-      onClose();
+      const response = await register(email, password, username);
+      
+      if (response && response.user) {
+        // Show success notification
+        showInfoModal('Registration successful! Please sign in.');
+        // Switch to login modal
+        onSwitchToLogin();
+      }
     } catch (error) {
       console.error("Registration error:", error);
-      setErrors({ general: "Registration failed. Please try again." });
-    } finally {
-      setIsLoading(false);
+      setErrors({ general: error.message || "Registration failed. Please try again." });
     }
   };
 
@@ -82,7 +76,6 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin }) {
     setPassword("");
     setUsername("");
     setErrors({});
-    setIsLoading(false);
     onClose();
   };
 
