@@ -1,11 +1,7 @@
-/* SignupModal component styles */
-
-/* Override modal container height for signup modal */
 .modal__container.signup-modal {
   height: 500px;
 }
 
-/* Override modal title spacing for signup modal */
 .modal__container.signup-modal .modal__title {
   margin: 0 0 24px 0;
 }

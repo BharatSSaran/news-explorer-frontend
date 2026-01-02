@@ -66,14 +66,14 @@
 @media (max-width: 768px) {
   .about {
     padding: 40px 40px 61px 40px;
-  }
+  }g
 
   .about__container {
     gap: 24px;
   }
 
   .about__photo {
-    max-width: 232px; /* Slightly smaller image for this breakpoint */
+    max-width: 232px;
   }
 
   .about__title {

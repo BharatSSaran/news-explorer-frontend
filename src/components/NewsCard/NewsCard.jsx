@@ -128,7 +128,6 @@ function NewsCard({
   const [showRemoveTooltip, setShowRemoveTooltip] = useState(false);
   let tooltipTimeout;
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => clearTimeout(tooltipTimeout);
   }, []);
@@ -137,7 +136,6 @@ function NewsCard({
     e.preventDefault();
 
     if (isSavedNewsPage) {
-      // On saved news page, remove the article
       onRemove?.(article);
       return;
     }

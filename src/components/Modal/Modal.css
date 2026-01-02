@@ -152,12 +152,12 @@
   }
 
   .modal__container {
-    width: 320px;
+    width: 100vw;
+    max-width: 320px;
     height: 568px;
     margin: 0;
     padding: 0;
     border-radius: 0;
-    max-width: 100%;
     transform: none;
     animation: none;
     overflow-y: auto;
@@ -230,7 +230,8 @@
   .modal__container.info-modal {
     height: auto !important;
     min-height: 150px !important;
-    width: 320px !important;
+    width: 100vw !important;
+    max-width: 320px !important;
     overflow: visible !important;
     margin: 0 !important;
   }

@@ -290,7 +290,7 @@
 @media (min-width: 321px) and (max-width: 480px) {
   .newscard {
     max-width: none;
-    height: auto; /* Let height be determined by content */
+    height: auto;
   }
 
   .newscard__content {
@@ -300,7 +300,7 @@
   .newscard__title {
     font-size: 22px;
     line-height: 24px;
-    min-height: 0; /* Reset min-height */
+    min-height: 0;
     -webkit-line-clamp: 3;
   }
 

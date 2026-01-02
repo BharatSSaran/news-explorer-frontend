@@ -80,7 +80,7 @@
 @media (max-width: 768px) {
   .saved-news__header {
     width: 100%;
-    max-width: 768px; /* Prevents container from staying at 1440px */
+    max-width: 768px;
     margin: 0 auto;
   }
 
@@ -94,13 +94,13 @@
   .saved-news__label {
     font-size: 14px;
     line-height: 24px;
-    margin-bottom: 16px; /* Reduced from desktop 32px */
+    margin-bottom: 16px;
   }
 
   .saved-news__title {
-    font-size: 30px; /* Scaled down for tablet */
+    font-size: 30px;
     line-height: 34px;
-    margin-bottom: 16px; /* Reduced from desktop 30px */
+    margin-bottom: 16px;
     letter-spacing: 0;
   }
 

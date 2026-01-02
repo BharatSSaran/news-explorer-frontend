@@ -116,7 +116,7 @@
 /* --- MOBILE VIEW (480px) --- */
 @media (min-width: 321px) and (max-width: 480px) {
   .news-card-list__grid {
-    grid-template-columns: 1fr; /* Single column layout */
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 }

@@ -4,7 +4,7 @@ A React application that allows users to search for news articles using the News
 
 ## 🎥 Video Overview
 
-[Video walkthrough will be added here]
+[Watch the project pitch and walkthrough](https://drive.google.com/file/d/1Q_qIEg8WWopcPSflpvxPgNQZbUVc6jec/view?usp=sharing)
 
 ## Features
 

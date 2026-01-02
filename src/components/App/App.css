@@ -1,9 +1,11 @@
-/* App component styles */
 .app {
-  background-color: #ffffff; /* Changed to white */
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Skip link for accessibility */

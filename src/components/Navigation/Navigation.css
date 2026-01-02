@@ -245,7 +245,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 320px;
+  width: 100vw;
+  max-width: 320px;
   height: 568px;
   background: linear-gradient(to bottom, #1a1b22 230px, transparent 230px);
   display: flex;
@@ -283,7 +284,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 56px;
   padding: 0 16px;
   margin: 0;
