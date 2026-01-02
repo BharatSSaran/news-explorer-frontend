@@ -2,31 +2,39 @@
 
 A React application that allows users to search for news articles using the News API and save them to their profiles. This is the frontend portion of a full-stack application built as the final project for TripleTen's Web Development Program.
 
+## 🎥 Video Overview
+
+[Video walkthrough will be added here]
+
 ## Features
 
 - **Search Functionality**: Search for news articles by keyword using NewsAPI
-- **Responsive Design**: Clean, mobile-first interface matching Figma designs
-- **User Authentication**: Registration and login functionality
+- **Responsive Design**: Fully responsive layout optimized for desktop (1440px), tablet (768px), and mobile (320px)
+- **User Authentication**: Registration and login functionality with form validation
 - **Save Articles**: Authenticated users can save and manage favorite articles
 - **Protected Routes**: Secure access to saved articles page
-- **Real-time Updates**: Dynamic loading states and error handling
+- **Real-time Updates**: Dynamic loading states with skeleton loaders and error handling
+- **Image Placeholders**: Elegant fallbacks for articles without images
 
 ## Technologies Used
 
-- **Frontend**: React (functional components with hooks)
-- **Routing**: React Router
+- **Frontend Framework**: React 19 with functional components and hooks
+- **Routing**: React Router DOM v7
+- **Build Tool**: Vite 7
 - **Styling**: CSS3 with BEM methodology
+- **Fonts**: Roboto, Roboto Slab, Inter, Source Sans Pro with @font-face
+- **Layout**: CSS Grid and Flexbox
+- **Icons**: SVG components
 - **API**: News API for article data
-- **Development**: Vite build tool
 - **Deployment**: GitHub Pages
 
 ## Live Demo
 
-🔗 [View Live Site](your-deployed-site-url-here)
+🔗 [View Live Site](https://bharatssaran.github.io/news-explorer-frontend/)
 
 ## Design
 
-🎨 [Figma Design](https://www.figma.com/file/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?type=design&node-id=0-1&mode=design)
+🎨 Figma Design - Responsive layouts implemented for 1440px, 768px, and 320px breakpoints
 
 ## Getting Started
 
@@ -51,27 +59,21 @@ A React application that allows users to search for news articles using the News
    npm install
    ```
 
-3. Create environment variables:
-
-   ```bash
-   cp .env.example .env
-   # Add your News API key to .env
-   REACT_APP_NEWS_API_KEY=your_api_key_here
-   ```
-
-4. Start the development server:
+3. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) to view in browser
+4. Open [http://localhost:5173](http://localhost:5173) to view in browser
 
-### Building for Production
+### Available Scripts
 
-```bash
-npm run build
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages
 
 ## Project Structure
 
@@ -79,14 +81,33 @@ npm run build
 src/
 ├── components/          # React components
 │   ├── App/            # Main app component
-│   ├── Header/         # Site header and navigation
-│   ├── Main/           # Main page layout
+│   ├── Header/         # Site header with navigation
+│   ├── Footer/         # Site footer
+│   ├── HomePage/       # Home page with search
+│   ├── Main/           # Main content area
 │   ├── NewsCard/       # Individual article cards
-│   ├── SearchForm/     # Search functionality
-│   └── Modal/          # Login/Register modals
-├── utils/              # Utility functions and API calls
-├── images/             # Image assets
-└── vendor/             # Third-party resources
+│   ├── NewsCardList/   # Grid of news cards
+│   ├── SearchForm/     # Article search functionality
+│   ├── SavedNews/      # Saved articles page
+│   ├── Navigation/     # Mobile navigation menu
+│   ├── Modal/          # Base modal component
+│   ├── LoginModal/     # Login form modal
+│   ├── SignupModal/    # Registration form modal
+│   ├── InfoModal/      # Success/info messages
+│   ├── About/          # About the author section
+│   ├── Preloader/      # Loading animation
+│   ├── SkeletonLoader/ # Skeleton loading states
+│   └── ErrorBoundary/  # Error handling wrapper
+├── contexts/           # React Context providers
+│   └── AuthContext.jsx # Authentication state
+├── utils/              # Utility functions
+│   ├── newsApi.js      # News API integration
+│   ├── authAPI.js      # Authentication API calls
+│   └── storage.js      # LocalStorage helpers
+├── styles/             # Global styles
+├── fonts/              # Custom fonts
+├── assets/             # Images and icons
+└── vendor/             # Third-party CSS (normalize.css)
 ```
 
 ## API Integration
@@ -94,72 +115,109 @@ src/
 This application integrates with:
 
 - **News API** for fetching news articles
-- Custom backend API for user authentication and saved articles (Stage 2/3)
+- Custom backend API for user authentication and saved articles (to be implemented in Stages 2/3)
 
-## Features Implementation
+## Responsive Design
 
-### Stage 1 (Current)
+The application is fully responsive with three main breakpoints:
 
-- ✅ React component architecture
-- ✅ Responsive design implementation
-- ✅ News API integration
-- ✅ Search functionality
-- ✅ Modal components
-- ✅ Frontend deployment
+- **Desktop**: 1440px - 3-column grid, cards 400x575px
+- **Tablet**: 768px - 3-column grid, cards 224x420px
+- **Mobile**: 320px - Single column, cards 288x444px
 
-### Stage 2 (Optional)
+All layouts are optimized for intermediate screen sizes with no horizontal scrolling.
 
-- 🔄 Backend API development
-- 🔄 User authentication system
-- 🔄 Database integration
+## Key Features Implementation
 
-### Stage 3 (Optional)
+### Stage 1 (Current) ✅
+
+- ✅ React component architecture with hooks
+- ✅ Responsive design for all breakpoints (320px, 768px, 1440px)
+- ✅ News API integration with search functionality
+- ✅ Modal system (Login, Signup, Info)
+- ✅ Form validation
+- ✅ Skeleton loaders and error states
+- ✅ Image placeholder fallbacks
+- ✅ BEM naming methodology
+- ✅ Semantic HTML
+- ✅ Frontend deployment to GitHub Pages
+- ✅ @font-face custom fonts with fallbacks
+- ✅ SVG icons
+- ✅ CSS Grid and Flexbox layouts
+
+### Stage 2 (Planned)
+
+- 🔄 Backend API development with Node.js/Express
+- 🔄 MongoDB database integration
+- 🔄 User authentication system with JWT
+- 🔄 API endpoints for saved articles
+
+### Stage 3 (Planned)
 
 - 🔄 Frontend-backend integration
 - 🔄 Full authentication flow
-- 🔄 Production deployment
+- 🔄 Production deployment on Google Cloud
+
+## Development Best Practices
+
+- Semantic HTML5 elements
+- BEM (Block Element Modifier) CSS methodology
+- Component-based React architecture
+- Error boundary implementation
+- Loading states with skeleton screens
+- Form validation with user feedback
+- Accessible focus states
+- Mobile-first responsive design
+- Git workflow with meaningful commits
 
 ## Contributing
 
 This is a student project for TripleTen's Web Development Program. Feedback and suggestions are welcome!
 
-## About This Project
+## Project Requirements Met
 
 This project demonstrates proficiency in:
 
-- Modern React development patterns
-- API integration and data management
-- Responsive web design
-- Git workflow and version control
-- Project planning and execution
+- ✅ Modern React development patterns (functional components, hooks, Context API)
+- ✅ API integration and asynchronous data management
+- ✅ Responsive web design (mobile-first approach)
+- ✅ CSS Grid and Flexbox layouts
+- ✅ BEM naming methodology
+- ✅ Semantic HTML5
+- ✅ Form validation and user feedback
+- ✅ Git workflow and version control
+- ✅ Project planning and execution
+- ✅ Component reusability
+- ✅ Accessibility considerations
+- ✅ Error handling and loading states
+
+## About This Project
 
 **Program**: TripleTen Web Development Bootcamp  
-**Timeline**: December 2025  
-**Project Type**: Final Capstone Project
+**Timeline**: December 2025 - January 2026  
+**Project Type**: Final Capstone Project (Stage 1)
+
+This project serves as the frontend foundation for a full-stack news aggregation application. It showcases modern React development practices, responsive design implementation, and API integration skills learned throughout the TripleTen program.
 
 ## Author
 
 **Bharat Saran**  
-TripleTen Web Development Program Graduate  
-📧 [email](bharatsaran@gmail.com)  
-🔗 [LinkedIn](linkedin.com/in/bharatsaran)  
-💻 Portfolio: Coming Soon
+Full-Stack Web Developer | TripleTen Graduate
 
-## Setup Repositories Task
+Hi, I'm Bharat Saran, a full-stack web developer specializing in React, JavaScript, and responsive design. I create clean, user-focused applications that work seamlessly across all devices.
 
-**Status**: ✅ Completed
+I completed my training at TripleTen, where I mastered modern web development practices, API integration, and component-based architecture. I'm passionate about building intuitive digital experiences and helping businesses bring their ideas to life through code.
 
-### Checklist:
+📧 Email: bharatsaran@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/bharatsaran)  
+💻 [GitHub](https://github.com/BharatSSaran)
 
-- [x] Create repositories for frontend and backend
-- [x] Make initial commits in each repository
-- [x] Create stage-1 branch (stage-2 for the backend repo) and switch to these branches
+## Acknowledgments
 
-### Repository Information:
+- TripleTen Web Development Program for project specifications and support
+- News API for providing article data
+- Figma design specifications
 
-- **Frontend Repo**: news-explorer-frontend (current)
-- **Backend Repo**: news-explorer-backend (to be created in Stage 2)
-- **Current Branch**: stage-1-frontend-and-api
-- **Main Branch**: Contains only initial README commit
+---
 
-# Trigger deployment with API key secret
+**Note**: This is Stage 1 of a three-stage project. Stages 2 and 3 will add backend functionality and full-stack integration.
