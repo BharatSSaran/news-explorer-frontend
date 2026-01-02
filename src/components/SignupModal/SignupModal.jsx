@@ -71,14 +71,12 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
 
   const handleInputChange = (setter, field) => (e) => {
     setter(e.target.value);
-    // Clear field error when user starts typing
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
   const handleModalClose = () => {
-    // Clear form when closing
     setEmail("");
     setPassword("");
     setUsername("");
@@ -87,7 +85,6 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
   };
 
   const handleSwitchToLogin = () => {
-    // Clear form when switching to login
     setEmail("");
     setPassword("");
     setUsername("");

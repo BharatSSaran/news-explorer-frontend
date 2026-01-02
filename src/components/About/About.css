@@ -66,9 +66,8 @@
 @media (max-width: 768px) {
   .about {
     padding: 40px 40px 61px 40px;
-  }g
-
-  .about__container {
+  }
+  g .about__container {
     gap: 24px;
   }
 

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import "./NewsCard.css";
 
-// Image placeholder icon
 const ImagePlaceholderIcon = () => (
   <svg
     width="96"
@@ -18,7 +17,6 @@ const ImagePlaceholderIcon = () => (
   </svg>
 );
 
-// SVG Components with fixed viewBox and explicit stroke/fill
 const BookmarkIcon = ({ className }) => (
   <svg
     width="14"

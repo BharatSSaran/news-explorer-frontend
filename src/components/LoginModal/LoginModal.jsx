@@ -12,14 +12,12 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
   const validateForm = () => {
     const newErrors = {};
 
-    // Email validation
     if (!email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Invalid email address";
     }
 
-    // Password validation
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
@@ -41,12 +39,10 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
       const response = await login(email, password);
 
       if (response && response.user) {
-        // Close modal on successful login
         onClose();
       }
     } catch (error) {
       console.error("Login error:", error);
-      // Handle specific error types appropriately
       if (
         error.message.includes("User not found") ||
         error.message.includes("user not found")
@@ -71,19 +67,17 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
 
   const handleInputChange = (setter, field) => (e) => {
     setter(e.target.value);
-    // Clear field error when user starts typing
     if (errors[field] || errors.general) {
       setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[field];
-        delete newErrors.general; // Clear general errors when user types
+        delete newErrors.general;
         return newErrors;
       });
     }
   };
 
   const handleModalClose = () => {
-    // Clear form when closing
     setEmail("");
     setPassword("");
     setErrors({});
@@ -91,7 +85,6 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
   };
 
   const handleSwitchToSignup = () => {
-    // Clear form when switching to signup
     setEmail("");
     setPassword("");
     setErrors({});

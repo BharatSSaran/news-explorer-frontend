@@ -8,7 +8,6 @@ const SearchForm = forwardRef(function SearchForm(
   const [query, setQuery] = useState(value);
   const [error, setError] = useState("");
 
-  // Expose reset function to parent
   useImperativeHandle(ref, () => ({
     reset: () => {
       setQuery("");

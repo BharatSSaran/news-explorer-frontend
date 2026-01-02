@@ -15,7 +15,6 @@ function SavedNews() {
     }
   };
 
-  // Generates a summary of the most frequent keywords
   const getKeywordsSummary = () => {
     if (!savedArticles || savedArticles.length === 0) {
       return "no keywords";
