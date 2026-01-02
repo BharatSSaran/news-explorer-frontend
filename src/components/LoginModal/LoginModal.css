@@ -1,5 +1,10 @@
 /* LoginModal component styles */
 
+/* Override modal container height for login modal */
+.modal__container.login-modal {
+  height: 420px;
+}
+
 .login-modal__error-banner {
   background-color: #ffe5e5;
   color: #d63031;
@@ -15,21 +20,22 @@
 .login-modal__form {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .login-modal__field {
   margin-bottom: 24px;
+  position: relative;
+  min-height: 68px; /* Reserve space for error message */
 }
 
 .login-modal__label {
   display: block;
   font-size: 12px;
   line-height: 15px;
-  font-weight: 500;
-  color: #1a1b22;
+  font-weight: 400;
+  color: #2f71e5;
   margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .login-modal__input {
@@ -53,10 +59,6 @@
   color: #b6bcbf;
 }
 
-.login-modal__input--error {
-  border-bottom-color: #ff6b6b;
-}
-
 .login-modal__input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -65,9 +67,15 @@
 .login-modal__error {
   display: block;
   color: #ff6b6b;
+  font-family: Inter;
+  font-weight: 400;
   font-size: 12px;
-  line-height: 15px;
-  margin-top: 8px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  position: absolute;
+  top: 72px; /* 3px below the input field: label(23px) + input(46px) + gap(3px) */
+  left: 0;
+  right: 0;
 }
 
 .login-modal__submit {
@@ -81,8 +89,9 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease, opacity 0.2s ease;
-  margin-top: 16px;
-  margin-bottom: 32px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .login-modal__submit:hover:not(:disabled) {
@@ -90,7 +99,8 @@
 }
 
 .login-modal__submit:disabled {
-  opacity: 0.6;
+  background-color: #e6e8eb;
+  color: #b6bcbf;
   cursor: not-allowed;
 }
 
@@ -103,7 +113,7 @@
   text-align: center;
   font-size: 14px;
   line-height: 20px;
-  color: #b6bcbf;
+  color: #1a1b22;
 }
 
 .login-modal__switch-button {
@@ -114,8 +124,8 @@
   line-height: 20px;
   font-weight: 500;
   cursor: pointer;
-  margin-left: 4px;
   transition: color 0.2s ease;
+  padding: 0;
 }
 
 .login-modal__switch-button:hover:not(:disabled) {
@@ -136,22 +146,43 @@
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
+  .modal__container.login-modal {
+    height: 568px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-modal__form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
   .login-modal__field {
-    margin-bottom: 20px;
+    margin-bottom: 23px;
+  }
+
+  .login-modal__field:last-of-type {
+    margin-bottom: 23px;
   }
 
   .login-modal__submit {
-    padding: 18px 20px;
-    font-size: 16px;
-    margin-top: 12px;
-    margin-bottom: 24px;
+    padding: 16px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 0;
+    margin-bottom: 16px;
   }
 
   .login-modal__switch {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 0;
   }
 
   .login-modal__switch-button {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 20px;
   }
 }

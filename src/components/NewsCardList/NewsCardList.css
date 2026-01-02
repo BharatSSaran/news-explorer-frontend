@@ -1,156 +1,158 @@
-/* NewsCardList component styles */
-.news-card-list {
-  padding: 80px 40px;
-  max-width: 1200px;
+.news-results-bg {
+  background-color: #f5f6f7;
+  max-width: 1440px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.news-card-list {
+  padding: 80px 104px 0 104px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #f5f6f7;
+  box-sizing: border-box;
 }
 
 .news-card-list__header {
-  margin-bottom: 40px;
-  text-align: left;
+  margin-bottom: 64px;
 }
 
 .news-card-list__title {
-  font-size: 40px;
-  line-height: 44px;
+  font-family: "Roboto Slab", serif;
   font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
   color: #1a1b22;
-  margin: 0 0 8px;
+  margin: 0;
+  letter-spacing: 0;
 }
 
 .news-card-list__count {
-  font-size: 18px;
-  line-height: 24px;
-  color: #b6bcbf;
-  margin: 0;
+  display: none;
 }
 
 .news-card-list__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(3, minmax(0, 400px));
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto 80px;
 }
 
-.news-card-list__empty {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.news-card-list__empty-text {
-  font-size: 18px;
-  line-height: 24px;
-  color: #b6bcbf;
-  margin: 0;
-}
-
+/* --- SHOW MORE BUTTON BASE STYLES --- */
 .news-card-list__show-more {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 80px;
+  box-sizing: border-box;
 }
 
 .news-card-list__show-more-button {
-  background: #2f71e5;
-  color: #ffffff;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 100px;
+  display: block;
+  background-color: #ffffff;
+  border-radius: 80px;
+  width: 288px;
+  height: 64px;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
+  color: #1a1b22;
+  border: 1px solid #d1d2d6;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
 .news-card-list__show-more-button:hover {
-  background: #347eff;
+  background-color: #f5f6f7;
 }
 
-/* Responsive design - Exact Figma breakpoints */
-@media (min-width: 1440px) {
+/* --- TABLET VIEW (1024px) --- */
+@media (max-width: 1024px) {
+  .news-card-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 400px));
+    gap: 16px;
+  }
+}
+
+/* --- TABLET VIEW (768px) --- */
+@media (min-width: 321px) and (max-width: 768px) {
   .news-card-list {
-    padding: 100px 80px;
-    max-width: 1440px;
+    padding: 32px 24px !important;
   }
 
-  .news-card-list__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+  .news-card-list__header {
+    margin-bottom: 32px;
   }
 
   .news-card-list__title {
-    font-size: 48px;
-    line-height: 52px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1439px) {
-  .news-card-list {
-    padding: 80px 40px;
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    letter-spacing: 0;
   }
 
   .news-card-list__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 224px);
+    gap: 8px !important;
+    margin: 0 auto 0;
   }
 
-  .news-card-list__title {
-    font-size: 40px;
-    line-height: 44px;
+  .news-card-list__show-more {
+    margin-top: 32px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .news-card-list__show-more-button {
+    width: 240px !important;
+    height: 56px !important;
   }
 }
 
-@media (max-width: 767px) {
+/* --- MOBILE VIEW (480px) --- */
+@media (min-width: 321px) and (max-width: 480px) {
+  .news-card-list__grid {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 16px;
+  }
+}
+
+/* --- MOBILE VIEW (320px) --- */
+@media (max-width: 320px) {
   .news-card-list {
-    padding: 40px 20px;
+    padding: 0 !important;
   }
 
   .news-card-list__header {
     margin-bottom: 24px;
-    text-align: center;
+    padding: 0 16px;
   }
 
   .news-card-list__title {
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 30px;
+    line-height: 34px;
   }
 
   .news-card-list__grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
+    grid-template-columns: 288px !important;
+    gap: 16px !important;
+    justify-content: center;
+    margin: 0 auto 24px;
+    padding: 0;
   }
 
   .news-card-list__show-more {
-    margin-top: 24px;
+    margin-top: 16px !important;
+    padding-bottom: 32px !important;
   }
 
   .news-card-list__show-more-button {
-    padding: 14px 24px;
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-
-@media (max-width: 320px) {
-  .news-card-list {
-    padding: 24px 16px;
-  }
-
-  .news-card-list__title {
-    font-size: 28px;
-    line-height: 32px;
-  }
-
-  .news-card-list__count {
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  .news-card-list__show-more-button {
-    padding: 12px 20px;
-    font-size: 15px;
-    line-height: 18px;
+    width: 288px !important;
+    height: 56px !important;
+    font-size: 18px;
   }
 }

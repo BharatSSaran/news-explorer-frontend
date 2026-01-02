@@ -1,6 +1,22 @@
 /* App component styles */
 .app {
+  background-color: #ffffff; /* Changed to white */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #2f71e5;
+  color: white;
+  padding: 8px;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  top: 0;
 }

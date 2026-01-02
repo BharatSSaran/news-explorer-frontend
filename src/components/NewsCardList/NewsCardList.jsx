@@ -10,6 +10,9 @@ function NewsCardList({
   showTitle = true,
   showMore = false,
   onShowMore,
+  onLoginClick,
+  showKeyword = false,
+  isSavedNewsPage = false,
 }) {
   // Check if an article is saved
   const isArticleSaved = (article) => {
@@ -41,7 +44,7 @@ function NewsCardList({
       {showTitle && (
         <div className="news-card-list__header slide-in-right">
           <h2 className="news-card-list__title">{title}</h2>
-          <p className="news-card-list__count">
+          <p className="news-card-list__count" style={{ display: "none" }}>
             {articles.length} {articles.length === 1 ? "result" : "results"}
           </p>
         </div>
@@ -55,6 +58,9 @@ function NewsCardList({
             onSave={onSaveArticle}
             onRemove={onRemoveArticle}
             isSaved={isArticleSaved(article)}
+            onLoginClick={onLoginClick}
+            showKeyword={showKeyword}
+            isSavedNewsPage={isSavedNewsPage}
           />
         ))}
       </div>

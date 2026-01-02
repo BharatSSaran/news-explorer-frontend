@@ -259,11 +259,6 @@
 }
 
 /* Gradient animations for modern feel */
-.search {
-  background: linear-gradient(-45deg, #f8f9fa, #ffffff, #f1f3f4, #e8eaed);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
 
 @keyframes gradientShift {
   0% {

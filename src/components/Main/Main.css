@@ -1,206 +1,57 @@
-/* Main page styles */
-.main {
-  flex: 1;
-  padding: 0;
-}
-
-.search {
-  background-color: #1a1b22;
-  color: #ffffff;
-  padding: 80px 40px;
-  text-align: center;
-}
-
-.search__title {
-  font-size: 60px;
-  line-height: 64px;
-  font-weight: 400;
-  margin: 0 0 32px;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.search__subtitle {
-  font-size: 18px;
-  line-height: 24px;
-  margin: 0 0 48px;
-  opacity: 0.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.news-results {
-  padding: 80px 40px;
-  text-align: center;
-  color: #1a1b22;
-}
-
-.news-results__empty,
-.news-results__prompt,
-.news-results__error {
-  max-width: 600px;
+.main-content {
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 20px;
+
+  box-sizing: border-box;
 }
 
-.news-results__empty p,
-.news-results__prompt p {
+/* News Results Empty State */
+.news-results__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 86px 40px 80px 40px;
+  background-color: #f5f6f7;
+  min-height: 300px;
+}
+
+.news-results__empty img {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 32px;
+  opacity: 0.6;
+}
+
+.news-results__empty h3 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+  margin: 0 0 16px 0;
+}
+
+.news-results__empty p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
   margin: 0;
+  max-width: 280px;
 }
 
-.news-results__error {
-  text-align: center;
-}
-
-.news-results__error h3 {
-  font-size: 24px;
-  line-height: 28px;
-  color: #1a1b22;
-  margin: 0 0 16px;
-  font-weight: 600;
-}
-
-.news-results__error p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #ff6b6b;
-  margin: 0 0 24px;
-  background: #ffeaea;
-  padding: 16px;
-  border-radius: 8px;
-  border-left: 4px solid #ff6b6b;
-}
-
-.news-results__retry-button {
-  background: #2f71e5;
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.news-results__retry-button:hover {
-  background: #347eff;
-}
-
-/* Responsive design - Exact Figma breakpoints */
-@media (min-width: 1440px) {
-  .search {
-    padding: 80px 40px;
-  }
-
-  .search__title {
-    font-size: 60px;
-    line-height: 64px;
-    margin-bottom: 32px;
-  }
-
-  .search__subtitle {
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 48px;
-  }
-
-  .news-results {
-    padding: 80px 40px;
+@media (max-width: 1024px) {
+  .main-content {
+    /* padding: 0 40px; */
   }
 }
 
-@media (min-width: 768px) and (max-width: 1439px) {
-  .search {
-    padding: 64px 32px;
-  }
-
-  .search__title {
-    font-size: 48px;
-    line-height: 52px;
-    margin-bottom: 24px;
-  }
-
-  .search__subtitle {
-    font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 40px;
-  }
-
-  .news-results {
-    padding: 64px 32px;
-  }
-}
-
-@media (max-width: 767px) {
-  .search {
-    padding: 48px 24px;
-  }
-
-  .search__title {
-    font-size: 36px;
-    line-height: 40px;
-    margin-bottom: 20px;
-  }
-
-  .search__subtitle {
-    font-size: 15px;
-    line-height: 20px;
-    margin-bottom: 32px;
-  }
-
-  .news-results {
-    padding: 48px 24px;
-  }
-
-  .news-results__empty p,
-  .news-results__prompt p {
-    font-size: 16px;
-    line-height: 22px;
-  }
-
-  .news-results__error h3 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .news-results__error p {
-    font-size: 15px;
-    line-height: 20px;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 320px) {
-  .search {
-    padding: 32px 16px;
-  }
-
-  .search__title {
-    font-size: 28px;
-    line-height: 32px;
-    margin-bottom: 16px;
-  }
-
-  .search__subtitle {
-    font-size: 14px;
-    line-height: 18px;
-    margin-bottom: 24px;
-  }
-
-  .news-results {
-    padding: 32px 16px;
-  }
-
-  .news-results__retry-button {
-    padding: 10px 20px;
-    font-size: 14px;
-    line-height: 18px;
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0 16px;
   }
 }

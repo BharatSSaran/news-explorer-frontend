@@ -10,7 +10,44 @@ class MockAuthAPI {
         email: "elise@example.com",
         username: "Elise",
         password: "password123", // In real app, this would be hashed
-        savedArticles: [],
+        savedArticles: [
+          {
+            title: "Everyone Needs a Special 'Sit Spot' in Nature",
+            description:
+              "Ever since I read Richard Louv's influential book, 'Last Child in the Woods,' the idea of having a special 'sit spot' has stuck with me.",
+            url: "https://example.com/nature-sit-spot",
+            urlToImage:
+              "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop",
+            publishedAt: "2020-11-04T00:00:00Z",
+            source: { name: "TREEHUGGER" },
+            keyword: "Nature",
+            savedAt: "2025-12-30T12:00:00Z",
+          },
+          {
+            title: "Nature makes you better",
+            description:
+              "We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.",
+            url: "https://example.com/nature-makes-better",
+            urlToImage:
+              "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop",
+            publishedAt: "2019-02-19T00:00:00Z",
+            source: { name: "NATIONAL GEOGRAPHIC" },
+            keyword: "Nature",
+            savedAt: "2025-12-30T12:00:00Z",
+          },
+          {
+            title: "Nostalgic Photos of Tourists in U.S. National Parks",
+            description:
+              "Uri Levavild Golman and Helle Levavild Golman are National Geographic Explorers and conservation photographers who just completed a project and book they call their love letter to America's national parks.",
+            url: "https://example.com/national-parks-photos",
+            urlToImage:
+              "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop",
+            publishedAt: "2020-10-19T00:00:00Z",
+            source: { name: "NATIONAL GEOGRAPHIC" },
+            keyword: "Yellowstone",
+            savedAt: "2025-12-30T12:00:00Z",
+          },
+        ],
       },
       {
         id: 2,

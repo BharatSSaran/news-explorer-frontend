@@ -1,66 +1,54 @@
 /* InfoModal component styles */
+.modal__container.info-modal {
+  width: 430px;
+  height: 182px;
+  padding: 40px 36px 36px 36px;
+}
+
 .info-modal {
-  text-align: center;
-}
-
-.info-modal__icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  text-align: left;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: bold;
-  margin: 0 auto 24px auto;
-  color: #ffffff;
-}
-
-.info-modal__icon--info {
-  background-color: #2f71e5;
-}
-
-.info-modal__icon--success {
-  background-color: #00d68f;
-}
-
-.info-modal__icon--error {
-  background-color: #ff6b6b;
-}
-
-.info-modal__content {
-  margin-bottom: 32px;
-}
-
-.info-modal__message {
-  font-size: 16px;
-  line-height: 24px;
-  color: #1a1b22;
-  margin: 0;
-  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .info-modal__actions {
-  display: flex;
-  justify-content: center;
+  display: block;
+  clear: both;
+}
+
+.modal__container.info-modal .modal__title {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: #1a1b22;
+  margin: 0 0 20px 0;
+  text-align: left;
+  display: block;
 }
 
 .info-modal__button {
-  background-color: #2f71e5;
-  color: #ffffff;
+  background: none;
+  color: #2f71e5;
   border: none;
-  border-radius: 100px;
-  padding: 16px 32px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  padding: 0;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  min-width: 120px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  align-self: flex-start;
+  display: block;
 }
 
 .info-modal__button:hover {
-  background-color: #347eff;
+  color: #347eff;
 }
 
 .info-modal__button:focus {
@@ -68,27 +56,35 @@
   outline-offset: 2px;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 480px) {
-  .info-modal__icon {
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-    margin-bottom: 20px;
+  .modal__container.info-modal {
+    width: 288px;
+    height: auto;
+    min-height: 120px;
+    padding: 0;
+    margin: 0 16px;
   }
 
-  .info-modal__message {
-    font-size: 15px;
-    line-height: 22px;
+  .info-modal {
+    padding: 0;
+    display: block;
+    height: auto;
   }
 
-  .info-modal__content {
-    margin-bottom: 24px;
+  .modal__container.info-modal .modal__title {
+    font-size: 24px;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .info-modal__actions {
+    margin: 0;
   }
 
   .info-modal__button {
-    padding: 14px 28px;
-    font-size: 15px;
-    min-width: 100px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0;
+    padding-top: 50px;
   }
 }

@@ -17,7 +17,7 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
     if (!email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = "Invalid email address";
     }
 
     // Username validation
@@ -52,7 +52,12 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
 
       if (response && response.user) {
         // Show success notification
-        showInfoModal("Registration successful! Please sign in.");
+        showInfoModal(
+          "Registration successfully completed!",
+          "",
+          "success",
+          "Sign in"
+        );
         // Switch to login modal
         onSwitchToLogin();
       }
@@ -81,6 +86,15 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
     onClose();
   };
 
+  const handleSwitchToLogin = () => {
+    // Clear form when switching to login
+    setEmail("");
+    setPassword("");
+    setUsername("");
+    setErrors({});
+    onSwitchToLogin();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={handleModalClose} className="signup-modal">
       <h2 className="modal__title">Sign Up</h2>
@@ -91,13 +105,13 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
         </div>
       )}
 
-      <form className="signup-modal__form" onSubmit={handleSubmit}>
+      <form className="signup-modal__form" onSubmit={handleSubmit} noValidate>
         <div className="signup-modal__field">
           <label className="signup-modal__label" htmlFor="signup-email">
             Email
           </label>
           <input
-            type="email"
+            type="text"
             id="signup-email"
             className={`signup-modal__input smooth-transition focus-ring ${
               errors.email ? "signup-modal__input--error" : ""
@@ -193,15 +207,17 @@ function SignupModal({ isOpen, onClose, onSwitchToLogin, showInfoModal }) {
       </form>
 
       <div className="signup-modal__switch fade-in">
-        <span>Already have an account?</span>
-        <button
-          type="button"
-          className="signup-modal__switch-button smooth-transition hover-opacity focus-ring"
-          onClick={onSwitchToLogin}
-          disabled={isLoading}
-        >
-          Sign In
-        </button>
+        <span>
+          or{" "}
+          <button
+            type="button"
+            className="signup-modal__switch-button smooth-transition hover-opacity focus-ring"
+            onClick={handleSwitchToLogin}
+            disabled={isLoading}
+          >
+            Sign In
+          </button>
+        </span>
       </div>
     </Modal>
   );

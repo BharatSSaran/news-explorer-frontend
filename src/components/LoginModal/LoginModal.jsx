@@ -16,7 +16,7 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
     if (!email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = "Invalid email address";
     }
 
     // Password validation
@@ -41,23 +41,44 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
       const response = await login(email, password);
 
       if (response && response.user) {
-        // Show success notification
-        showInfoModal("Login successful!");
+        // Close modal on successful login
         onClose();
       }
     } catch (error) {
       console.error("Login error:", error);
-      setErrors({
-        general: error.message || "Login failed. Please try again.",
-      });
+      // Handle specific error types appropriately
+      if (
+        error.message.includes("User not found") ||
+        error.message.includes("user not found")
+      ) {
+        setErrors({
+          email: "User not found",
+        });
+      } else if (
+        error.message.includes("password") ||
+        error.message.includes("Password")
+      ) {
+        setErrors({
+          password: error.message,
+        });
+      } else {
+        setErrors({
+          general: error.message || "Login failed. Please try again.",
+        });
+      }
     }
   };
 
   const handleInputChange = (setter, field) => (e) => {
     setter(e.target.value);
     // Clear field error when user starts typing
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }));
+    if (errors[field] || errors.general) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        delete newErrors.general; // Clear general errors when user types
+        return newErrors;
+      });
     }
   };
 
@@ -67,6 +88,14 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
     setPassword("");
     setErrors({});
     onClose();
+  };
+
+  const handleSwitchToSignup = () => {
+    // Clear form when switching to signup
+    setEmail("");
+    setPassword("");
+    setErrors({});
+    onSwitchToSignup();
   };
 
   return (
@@ -79,13 +108,13 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
         </div>
       )}
 
-      <form className="login-modal__form" onSubmit={handleSubmit}>
+      <form className="login-modal__form" onSubmit={handleSubmit} noValidate>
         <div className="login-modal__field">
           <label className="login-modal__label" htmlFor="email">
             Email
           </label>
           <input
-            type="email"
+            type="text"
             id="email"
             className={`login-modal__input smooth-transition focus-ring ${
               errors.email ? "login-modal__input--error" : ""
@@ -147,15 +176,17 @@ function LoginModal({ isOpen, onClose, onSwitchToSignup, showInfoModal }) {
       </form>
 
       <div className="login-modal__switch fade-in">
-        <span>Don't have an account?</span>
-        <button
-          type="button"
-          className="login-modal__switch-button smooth-transition hover-opacity focus-ring"
-          onClick={onSwitchToSignup}
-          disabled={isLoading}
-        >
-          Sign Up
-        </button>
+        <span>
+          or{" "}
+          <button
+            type="button"
+            className="login-modal__switch-button smooth-transition hover-opacity focus-ring"
+            onClick={handleSwitchToSignup}
+            disabled={isLoading}
+          >
+            Sign Up
+          </button>
+        </span>
       </div>
     </Modal>
   );

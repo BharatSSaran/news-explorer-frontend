@@ -1,9 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import "./SearchForm.css";
 
-function SearchForm({ onSearch }) {
-  const [query, setQuery] = useState("");
+const SearchForm = forwardRef(function SearchForm(
+  { onSearch, value = "" },
+  ref
+) {
+  const [query, setQuery] = useState(value);
   const [error, setError] = useState("");
+
+  // Expose reset function to parent
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      setQuery("");
+      setError("");
+    },
+  }));
+
+  // Update internal state when value prop changes
+  useEffect(() => {
+    setQuery(value);
+    // Also clear any errors when value is reset
+    if (value === "") {
+      setError("");
+    }
+  }, [value]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,6 +85,6 @@ function SearchForm({ onSearch }) {
       )}
     </form>
   );
-}
+});
 
 export default SearchForm;
