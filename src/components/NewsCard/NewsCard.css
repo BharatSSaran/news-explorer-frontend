@@ -1,0 +1,440 @@
+/* ==========================================
+   1. BASE NEWS CARD STYLES (1440px viewport)
+   ========================================== */
+.newscard {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.16);
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 400 / 576;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newscard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.newscard__image-container {
+  width: 100%;
+  height: 0;
+  padding-top: 68%;
+  position: relative;
+  overflow: hidden;
+  background-color: #f5f6f7;
+  flex-shrink: 0;
+}
+
+.newscard__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newscard__image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f6f7 0%, #e8e8e8 100%);
+  color: #b6bcbf;
+}
+
+.newscard__image-placeholder svg {
+  width: 96px;
+  height: 96px;
+  opacity: 0.5;
+}
+
+.newscard__image-container--no-image {
+  background: linear-gradient(135deg, #f5f6f7 0%, #e8e8e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newscard__image-container--no-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  background-image: url("data:image/svg+xml,%3Csvg width='96' height='96' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z' fill='%23B6BCBF'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+}
+
+/* ==========================================
+   2. BUTTONS, TAGS, & TOOLTIPS
+   ========================================== */
+
+/* Wrapper for button and tooltips */
+.newscard__button-wrapper {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Base Action Button (Bookmark or Trash) */
+.newscard__save-button,
+.newscard__trash-button {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  order: 2;
+}
+
+/* Forcing SVG Visibility */
+.newscard__save-button svg,
+.newscard__trash-button svg,
+.newscard__icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Ensure proper button hover states */
+.newscard__save-button:hover,
+.newscard__trash-button:hover {
+  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Trash icon specifically is usually a bit wider */
+.newscard__trash-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ==========================================
+   3. CARD CONTENT
+   ========================================== */
+
+.newscard__content {
+  padding: 20px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.newscard__date {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin: 0 0 12px 0;
+  flex-shrink: 0;
+}
+
+.newscard__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  color: #1a1b22;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.newscard__description {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  margin: 0;
+  max-width: 352px;
+  max-height: 88px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.newscard__source {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+  margin-top: 18px;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   4. RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .newscard__content {
+    padding: 16px;
+  }
+
+  .newscard__title {
+    font-size: 22px;
+    line-height: 24px;
+    min-height: 72px; /* 3 * 24px */
+  }
+
+  .newscard__text {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .newscard {
+    width: 224px;
+    height: 420px;
+    max-width: 224px;
+    aspect-ratio: 224 / 420;
+  }
+
+  .newscard__image-container {
+    height: 150px;
+    padding-top: 0;
+    flex-shrink: 0;
+  }
+
+  .newscard__button-wrapper {
+    top: 8px;
+    right: 8px;
+  }
+
+  .newscard__keyword-tag {
+    top: 8px !important;
+    left: 8px !important;
+    padding: 4px 12px;
+    font-size: 10px;
+    line-height: 12px;
+    margin: 0;
+  }
+
+  .newscard__content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: calc(420px - 150px);
+    overflow: hidden;
+  }
+
+  .newscard__date {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 12px;
+  }
+
+  .newscard__title {
+    font-size: 22px;
+    line-height: 24px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .newscard__description {
+    width: 192px;
+    height: 88px;
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-line-clamp: 4;
+    flex-grow: 0;
+    margin: 0;
+  }
+
+  .newscard__source {
+    margin-top: auto;
+    padding-top: 12px;
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
+  .newscard {
+    max-width: none;
+    height: auto;
+  }
+
+  .newscard__content {
+    padding: 16px 16px 24px;
+  }
+
+  .newscard__title {
+    font-size: 22px;
+    line-height: 24px;
+    min-height: 0;
+    -webkit-line-clamp: 3;
+  }
+
+  .newscard__text {
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 14px;
+    -webkit-line-clamp: 4;
+  }
+}
+
+/* Keyword Tag (Saved News Page) */
+.newscard__keyword-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1a1b22;
+  z-index: 5;
+  text-transform: capitalize;
+}
+
+/* Tooltip: "Sign in to save articles" */
+.newscard__signin-tooltip {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 12px 20px;
+  z-index: 20;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 8px; /* Space between tooltip and button */
+  order: 1; /* Ensure tooltip is on the left */
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.newscard__signin-tooltip-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+
+/* Tooltip: "Remove from saved" */
+.newscard__remove-tooltip {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 12px 20px;
+  z-index: 20;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 8px; /* Space between tooltip and button */
+  order: 1; /* Ensure tooltip is on the left */
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.newscard__remove-tooltip-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+
+@media (max-width: 767px) {
+  .newscard {
+    width: 288px !important;
+    height: 444px !important;
+    max-width: 288px !important;
+    aspect-ratio: 288 / 444 !important;
+  }
+
+  .newscard__image-container {
+    height: 196px !important;
+    padding-top: 0;
+    flex-shrink: 0;
+  }
+
+  .newscard__button-wrapper {
+    top: 8px;
+    right: 8px;
+  }
+
+  .newscard__keyword-tag {
+    top: 8px;
+    left: 8px;
+  }
+
+  .newscard__content {
+    padding: 16px;
+    height: calc(444px - 196px);
+  }
+
+  .newscard__date {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+
+  .newscard__title {
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+  }
+
+  .newscard__description {
+    width: 100%;
+    max-width: 256px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .newscard__source {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: auto;
+  }
+}

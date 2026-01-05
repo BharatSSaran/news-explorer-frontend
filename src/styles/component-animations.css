@@ -1,0 +1,323 @@
+/* Component-specific animation enhancements */
+
+/* Search section animations */
+.search__title {
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.search__subtitle {
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
+}
+
+/* News card enhanced hover effects */
+.newscard {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+.newscard:hover .newscard__image {
+  transform: scale(1.03);
+}
+
+.newscard__image {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button enhanced animations */
+.search-form__button {
+  position: relative;
+  overflow: hidden;
+}
+
+.search-form__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-form__button:hover::before {
+  left: 100%;
+}
+
+/* Modal enhanced animations */
+.modal {
+  backdrop-filter: blur(5px);
+  animation: modalBackdropFadeIn 0.3s ease-out;
+}
+
+@keyframes modalBackdropFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(5px);
+  }
+}
+
+.modal__container {
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Modal close button enhanced */
+.modal__close-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal__close-button:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Form field focus animations */
+.login-modal__input:focus,
+.signup-modal__input:focus,
+.search-form__input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Error message enhanced animations */
+.login-modal__error,
+.signup-modal__error,
+.search-form__error-text {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+/* Navigation enhanced animations */
+.navigation__user {
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+}
+
+.navigation__signin {
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.navigation__signout-icon {
+  transform-origin: center;
+}
+
+.navigation__signout:hover .navigation__signout-icon {
+  transform: translateX(3px);
+}
+
+/* News card list stagger delays */
+.stagger-children > .newscard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-children > .newscard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-children > .newscard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-children > .newscard:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-children > .newscard:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.stagger-children > .newscard:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Show more button enhanced */
+.news-card-list__show-more-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-card-list__show-more-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.news-card-list__show-more-button:active::after {
+  width: 300px;
+  height: 300px;
+  transition: width 0.2s, height 0.2s;
+}
+
+/* Preloader enhanced animations */
+.preloader {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth height transitions for dynamic content */
+.news-card-list__grid {
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus styles for accessibility */
+.focus-ring:focus-visible {
+  outline: 3px solid rgba(66, 153, 225, 0.8);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(66, 153, 225, 0.2);
+}
+
+/* Page transition for route changes */
+.main {
+  animation: pageTransitionIn 0.6s ease-out;
+}
+
+@keyframes pageTransitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state animations */
+.skeleton-loader {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Micro-interactions for save buttons */
+.newscard__save-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.newscard__save-button:hover {
+  transform: scale(1.1);
+}
+
+.newscard__save-button:active {
+  transform: scale(0.95);
+}
+
+.newscard__save-button--saved {
+  animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Enhanced error states */
+.login-modal__input--error,
+.signup-modal__input--error,
+.search-form__input--error {
+  animation: shake 0.5s ease-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-3px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* Gradient animations for modern feel */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Loading spinner enhancement */
+.preloader__spinner {
+  animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+/* Smooth scroll enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced transitions for all interactive elements */
+button,
+input,
+[role="button"] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations */
+.smooth-transition,
+.smooth-transition-fast,
+.smooth-transition-slow,
+.newscard,
+.modal__container {
+  will-change: transform, opacity;
+}
+
+/* Clean up will-change after animations */
+.fade-in,
+.scale-in,
+.slide-in-bottom,
+.slide-in-right {
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Ensure animations respect user preferences */
+  .search {
+    background: #f8f9fa;
+    animation: none;
+  }
+
+  .newscard:hover .newscard__image {
+    transform: none;
+  }
+
+  .modal__close-button:hover {
+    transform: none;
+  }
+}
