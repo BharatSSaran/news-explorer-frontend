@@ -68,7 +68,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .footer__container {
     flex-direction: row;
     align-items: center;
@@ -147,6 +147,7 @@
     order: 1;
     font-size: 16px;
     line-height: 22px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+    letter-spacing: 0;
   }
 }

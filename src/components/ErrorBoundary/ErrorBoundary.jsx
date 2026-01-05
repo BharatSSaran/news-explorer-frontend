@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./ErrorBoundary.css";
 
 class ErrorBoundary extends Component {
@@ -47,7 +47,7 @@ class ErrorBoundary extends Component {
               </button>
             </div>
 
-            {process.env.NODE_ENV === "development" && (
+            {process.env.NODE_ENV === "development" && this.state.errorInfo && (
               <details className="error-boundary__details">
                 <summary>Error Details (Development)</summary>
                 <div className="error-boundary__error-info">

@@ -1,3 +1,4 @@
+import React from "react";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 import "./Preloader.css";
 

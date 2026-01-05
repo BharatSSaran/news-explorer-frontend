@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .container {
     padding: 0 24px;
   }
@@ -88,7 +88,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .text-display {
     font-size: 36px;
     line-height: 40px;
@@ -270,7 +270,7 @@
   gap: 32px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .grid-cols-2-mobile {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -280,7 +280,7 @@
 }
 
 /* Visibility utilities */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hidden-mobile {
     display: none !important;
   }

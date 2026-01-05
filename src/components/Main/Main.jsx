@@ -1,3 +1,4 @@
+import React from "react";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import searchNotFoundIcon from "../../assets/icons/search-not-found-icon.svg";

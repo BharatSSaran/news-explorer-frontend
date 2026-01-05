@@ -78,11 +78,11 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .search-form {
     max-width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 
@@ -96,7 +96,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .search-form {
     width: 288px;
     max-width: 288px;

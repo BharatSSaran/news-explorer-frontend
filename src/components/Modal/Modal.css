@@ -110,7 +110,7 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .modal__container {
     margin: 16px;
     /* padding: 24px; */
@@ -135,7 +135,7 @@
   display: none;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .modal {
     align-items: flex-start;
     justify-content: flex-start;
@@ -143,8 +143,8 @@
   }
 
   .modal__wrapper {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
   }
 
   .modal__wrapper > .modal__close-button {
@@ -153,15 +153,16 @@
 
   .modal__container {
     width: 100vw;
-    max-width: 320px;
-    height: 568px;
+    height: 100vh;
     margin: 0;
     padding: 0;
     border-radius: 0;
     transform: none;
     animation: none;
-    overflow-y: auto;
-    background-color: transparent;
+    overflow-y: hidden;
+    background-color: #1a1b22;
+    display: flex;
+    flex-direction: column;
   }
 
   .modal__header {
@@ -171,9 +172,10 @@
     width: 100%;
     height: 56px;
     padding: 0 16px;
+    margin: 0;
     box-sizing: border-box;
-    background-color: transparent;
-    border-bottom: none;
+    background-color: #1a1b22;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.4);
     position: sticky;
     top: 0;
     left: 0;
@@ -213,36 +215,38 @@
     box-sizing: border-box;
     overflow-y: auto;
     background-color: #ffffff;
-    border-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     padding-right: 17px;
   }
 
   .modal__container.info-modal .modal__content {
     padding: 20px 16px 40px 16px;
     min-height: 100px;
-    height: auto;
+    height: 100%;
     overflow: visible;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
   }
 
   .modal__container.info-modal {
-    height: auto !important;
-    min-height: 150px !important;
+    height: 100vh !important;
     width: 100vw !important;
-    max-width: 320px !important;
-    overflow: visible !important;
+    overflow: hidden !important;
     margin: 0 !important;
+    background-color: #1a1b22 !important;
   }
 
   .modal__title {
-    width: 158px;
-    height: 28px;
+    width: auto;
+    max-width: 288px;
+    height: auto;
     font-family: "Roboto", sans-serif;
     font-weight: 900;
     font-size: 24px;
-    line-height: 100%;
+    line-height: 28px;
     letter-spacing: 0%;
     margin: 0 0 18px 0;
   }

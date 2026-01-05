@@ -1,4 +1,9 @@
-import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import "./SearchForm.css";
 
 const SearchForm = forwardRef(function SearchForm(

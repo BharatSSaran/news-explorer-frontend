@@ -1,3 +1,4 @@
+import React from "react";
 import "./SkeletonLoader.css";
 
 function SkeletonLoader({ type = "card", count = 3 }) {

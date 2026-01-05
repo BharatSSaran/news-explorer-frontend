@@ -179,7 +179,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .skeleton-container {
     padding: 24px 16px;
   }

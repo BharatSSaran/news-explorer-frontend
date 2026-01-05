@@ -1,3 +1,4 @@
+import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import "./SavedNews.css";

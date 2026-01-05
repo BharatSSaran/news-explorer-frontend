@@ -1,3 +1,4 @@
+import React from "react";
 import "./About.css";
 import authorPhoto from "../../assets/images/author-photo.jpg";
 
